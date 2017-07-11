@@ -2,14 +2,16 @@
 layout: default
 ---
 <p>
-	<a href="/index.md"> << Back to Index </a>
+	<a href="/"> << Back to Index </a>
 </p>
 <div id="post">
+    
+    <span>
     <h3>Categories:</h3>
     {% for cate in page.categories %}
     	{{ cate }}		
     {% endfor %}
-    
+    </span>
     {{ content }}
 </div>
 <div id="related">

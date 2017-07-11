@@ -5,16 +5,16 @@
 　	　　<title>{{ page.title }}</title>
 　　</head>
 　　<body>
-		---
-		Categories:
+		<h4>Categories:</h4>
 		{% for cate in page.categories %}
 			{{ cate }}		
 		{% endfor %}
-		---
+		
 　　　　{{ page.content }}
 　　</body>
 
 	{% for post in site.related_posts %}
+	<h3>Recent Posts:</h3>
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>

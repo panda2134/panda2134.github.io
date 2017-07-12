@@ -22,7 +22,6 @@ layout: default
   document.getElementById('l').innerHTML=document.getElementById('l').innerHTML.concat(curTag);
   document.getElementById('l').innerHTML=document.getElementById('l').innerHTML.concat('":</h2>');
   {% raw %}
-  document.getElementById('l').innerHTML='';
   for(var i=0;i<archieves.length;i++){
     ret=ret.concat('<a href="');
     ret=ret.concat(archieves[i].url);

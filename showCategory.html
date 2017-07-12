@@ -20,13 +20,13 @@ layout: default
   var ret='';
   {% raw %}
   document.getElementById('l').innerHTML='';
-  for(var it in archieves){
+  for(var i=0;i<archieves.length;i++){
     ret=ret.concat('<a href="');
-    ret=ret.concat(it.url);
+    ret=ret.concat(archieves[i].url);
     ret=ret.concat('><h3>');
-    ret=ret.concat(it.date);
+    ret=ret.concat(archieves[i].date);
     ret=ret.concat(' - ');
-    ret=ret.concat(it.title);
+    ret=ret.concat(archieves[i].title);
     ret=ret.concat('/h3></a>');
     console.log(ret);
     document.getElementById('l').innerHTML.concat(ret);

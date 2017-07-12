@@ -31,19 +31,20 @@ MathJax.Hub.Config({
 <div id="comment">
      {% if page.comments %}
 	<h3>Comments:</h3>
-<div id="comm"></div>
+<div id="comm1"></div>
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
+  id: '{{page.id}}',
   owner: 'panda2134',
   repo: 'panda2134.github.io',
   oauth: {
     client_id: '9107291a3086ed30c48f',
-    client_secret: '    45d0df6bd97e175785e267c0bf073e134204c6d2',
+    client_secret: 'aaa7ae9353eca07778c747e5641ffa81c5c24e8d',
   },
 });
-gitment.render('comm');
+gitment.render('comm1');
 </script>
 	<noscript>Please enable JavaScript to view the comments.</noscript>
 	{% else %}

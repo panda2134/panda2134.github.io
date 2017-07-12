@@ -24,7 +24,6 @@ MathJax.Hub.Config({
       <div style="color:#159957">Categories:</div>
       {% for category in site.categories %}
       <a href="/showCategory.html?cat={{ category | first }}"<h2>{{ category | first }}</h2></a>({{ category | last | size }})
-      <br/>
       {% endfor %}
     </div>
     <hr/>

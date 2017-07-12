@@ -20,11 +20,17 @@ MathJax.Hub.Config({
 }
 </style>
 <div class="sidebar">
-    <div style="color:#159957">Categories:</div>
-    {% for category in site.categories %}
-    <a href="/showCategory.html?cat={{ category | first }}"<h2>{{ category | first }}</h2></a>({{ category | last | size }})
-    <br/>
-    {% endfor %}
+    <div>
+      <div style="color:#159957">Categories:</div>
+      {% for category in site.categories %}
+      <a href="/showCategory.html?cat={{ category | first }}"<h2>{{ category | first }}</h2></a>({{ category | last | size }})
+      <br/>
+      {% endfor %}
+    </div>
+    <div>
+      <div style="color:#159957">Friend Link:</div>
+      {% include 'friend-link' %}
+    </div>
 </div>
 <div class="main">
   <h1>Recent Blogs</h1>

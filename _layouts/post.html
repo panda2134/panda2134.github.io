@@ -9,14 +9,14 @@ comments: true
 <h2>{{post.title}}</h2>
 <div id="post">
     <h3>Categories:</h3>
-    {% for cate in page.categories %}
-    	{{ cate }} &nbsp;
-    {% endfor %}
-    {{ content }}
+    {{ for cate in page.categories | array_to_sentence_string }}
+		<p>
+    	{{ content }}
+		</p>
 </div>
 <div id="related">
     {% for post in site.related_posts %}
-    	<h3>Recent Posts:</h3>
+    	<h3>RElated Posts:</h3>
         <ul class="posts">
    			{% for post in site.related_posts limit:3 %}
     		<li><a href="{{ post.url }}">{{ post.title }}</a></li>
@@ -30,8 +30,8 @@ comments: true
 <script>
 
 var disqus_config = function () {
-this.page.url = {{page.url}};
-this.page.identifier = {{page.id}};
+this.page.url = "{{page.url}}";
+this.page.identifier = "{{page.id}}";
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE

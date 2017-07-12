@@ -9,7 +9,7 @@ comments: true
 <h2>{{post.title}}</h2>
 <div id="post">
     <h3>Categories:</h3>
-    {{ for cate in page.categories | array_to_sentence_string }}
+    {{ page.categories | array_to_sentence_string }}
 		<p>
     	{{ content }}
 		</p>

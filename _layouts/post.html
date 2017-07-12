@@ -31,21 +31,20 @@ MathJax.Hub.Config({
 <div id="comment">
      {% if page.comments %}
 	<h3>Comments:</h3>
-	<div id="disqus_thread"></div>
+<div id="comm"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-
-var disqus_config = function () {
-this.page.url = "{{page.url}}";  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = "{{page.id}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://panda2134.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
+var gitment = new Gitment({
+  owner: 'panda2134',
+  repo: 'panda2134.github.io',
+  oauth: {
+    client_id: '9107291a3086ed30c48f',
+    client_secret: '    45d0df6bd97e175785e267c0bf073e134204c6d2',
+  },
+});
+gitment.render('comm');
 </script>
-
 	<noscript>Please enable JavaScript to view the comments.</noscript>
 	{% else %}
 	<h3>Comments are not enabled on this thread.</h3>

@@ -29,7 +29,7 @@ layout: default
     ret=ret.concat(archieves[i].title);
     ret=ret.concat('/h3></a>');
     console.log(ret);
-    document.getElementById('l').innerHTML.concat(ret);
+    document.getElementById('l').innerHTML=document.getElementById('l').innerHTML.concat(ret);
     ret='';
   }
   {% endraw %}

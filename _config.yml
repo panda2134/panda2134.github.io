@@ -5,3 +5,10 @@ highlighter: rouge
 author: panda_2134
 permalink: /:year/:month/:day/:title
 excerpt_separator: <!--more-->
+defaults:
+  -
+    scope:
+      path: "" 
+    values:
+      layout: "post"
+	comments: true

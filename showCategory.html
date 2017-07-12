@@ -19,17 +19,18 @@ layout: default
   archieves = data[curTag];
   var ret='';
   {% raw %}
+  document.getElementById('l').innerHTML='';
   for(var it in archieves){
-    ret.concat('<a href="');
-    ret.concat(it.url);
-    ret.concat('><h3>');
-    ret.concat(it.date);
-    ret.concat(' - ');
-    ret.concat(it.title);
-    ret.concat('/h3></a>');
+    ret=ret.concat('<a href="');
+    ret=ret.concat(it.url);
+    ret=ret.concat('><h3>');
+    ret=ret.concat(it.date);
+    ret=ret.concat(' - ');
+    ret=ret.concat(it.title);
+    ret=ret.concat('/h3></a>');
     console.log(ret);
     document.getElementById('l').innerHTML.concat(ret);
-    ret=''
+    ret='';
   }
   {% endraw %}
 </script>

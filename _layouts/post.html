@@ -1,6 +1,5 @@
 ---
 layout: default
-comments: true
 ---
 <p>
 	<a href="/"> << Back to Index </a>
@@ -32,12 +31,23 @@ MathJax.Hub.Config({
 <div id="comment">
      {% if page.comments %}
 	<h3>Comments:</h3>
-<!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="/js/uyan.js?uid=2138614"></script>
-<!-- UY END -->
-<noscript>Please enable JavaScript to view the comments.</noscript>
-{% else %}
-<h3>Comments are not enabled on this thread.</h3>
+	<div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = "{{page.url}}";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "{{page.id}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://panda2134.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+	<noscript>Please enable JavaScript to view the comments.</noscript>
+	{% else %}
+	<h3>Comments are not enabled on this thread.</h3>
 {% endif %}
 </div>

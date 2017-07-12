@@ -12,5 +12,15 @@ layout: default
   var data = JSON.parse(dataStr),
   curTag = $.query.get("cat"),
   archieves = data[curTag];
-
+  {% raw %}
+  for(var it in archieves){
+    document.write('<a href="');
+    document.write(it.url);
+    document.write('><h3>');
+    document.write(it.date);
+    document.write(' - ');
+    document.write(it.title);
+    document.write('/h3></a>');
+  }
+  {% endraw %}
 </script>

@@ -18,21 +18,9 @@ layout: default
   curTag = $.query.get("cat"),
   archieves = data[curTag];
   var ret='';
-  document.getElementById('l').innerHTML='<h2>Articles in Category "';
-  document.getElementById('l').innerHTML=document.getElementById('l').innerHTML.concat(curTag);
-  document.getElementById('l').innerHTML=document.getElementById('l').innerHTML.concat('":</h2>');
-  {% raw %}
+  document.getElementById('l').innerHTML='<h2>Articles in Category "'.concat(curTag).concat('"</h2>');
   for(var i=0;i<archieves.length;i++){
-    ret=ret.concat('<a href="');
-    ret=ret.concat(archieves[i].url);
-    ret=ret.concat('"><h3>');
-    ret=ret.concat(archieves[i].date);
-    ret=ret.concat(' - ');
-    ret=ret.concat(archieves[i].title);
-    ret=ret.concat('</h3></a>');
-    //console.log(ret);
+    ret="".concat('<a href="').concat(archieves[i].url).concat('"><h3>').concat(archieves[i].date).concat(' - ').concat(archieves[i].title).concat('</h3></a>');
     document.getElementById('l').innerHTML=document.getElementById('l').innerHTML.concat(ret);
-    ret='';
   }
-  {% endraw %}
 </script>

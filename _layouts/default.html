@@ -1,0 +1,27 @@
+<!DOCTYPE html> <html lang="en-us">
+
+  {% include head.html %}
+
+	  		<style type="text/css">
+				.sidebar{
+	  	     	float: right; width: 200px;
+	  		}
+				</style>
+
+  <body> {% include page-header.html %}
+
+    <section class="main-content">
+      <h2>{{page.title}}</h2>
+      {{ content }}
+			<div class="sidebar">
+				<h1>Categories</h1>
+				{% for category in site.categories %}
+				<ul>
+    				<li><a href="{{ site.baseurl}}/category/{{ category.first }}.html">{{category.first}}（{{category.last.size}}）</a></li>
+				</ul>
+				{% endfor %}
+			</div>
+      {% include page-footer.html %}
+    </section>
+  </body>
+</html>

@@ -1,1 +1,5 @@
 theme: jekyll-theme-cayman
+title: Panda_2134's Blog
+markdown: kramdown
+highlighter: rouge
+excerpt_separator: <!--more-->

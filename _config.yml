@@ -2,4 +2,5 @@ theme: jekyll-theme-cayman
 title: Panda_2134's Blog
 markdown: kramdown
 highlighter: rouge
+author: panda_2134
 excerpt_separator: <!--more-->

@@ -12,15 +12,21 @@ layout: default
   var data = JSON.parse(dataStr),
   curTag = $.query.get("cat"),
   archieves = data[curTag];
+  var ret='';
   {% raw %}
   for(var it in archieves){
-    document.write('<a href="');
-    document.write(it.url);
-    document.write('><h3>');
-    document.write(it.date);
-    document.write(' - ');
-    document.write(it.title);
-    document.write('/h3></a>');
+    ret.concat('<a href="');
+    ret.concat(it.url);
+    ret.concat('><h3>');
+    ret.concat(it.date);
+    ret.concat(' - ');
+    ret.concat(it.title);
+    ret.concat('/h3></a>');
+    console.write(ret);
+    document.getElementById('l').innerHTML.concat(ret);
+    ret=''
   }
   {% endraw %}
 </script>
+<span id="l">
+</span>

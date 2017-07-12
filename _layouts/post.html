@@ -8,8 +8,7 @@ comments: true
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 <h2>{{page.title}}</h2>
 <div id="post">
-    <h3>Categories:</h3>
-    {{ page.categories | array_to_sentence_string :'' }}
+    <span style="color:#159957">Categories:</span><span>{{ page.categories | array_to_sentence_string :'' }}</span>
 		<p>
     	{{ content }}
 		</p>

@@ -5,7 +5,7 @@ comments: true
 <p>
 	<a href="/"> << Back to Index </a>
 </p>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 <h2>{{post.title}}</h2>
 <div id="post">
     <h3>Categories:</h3>
@@ -26,6 +26,7 @@ comments: true
 </div>
 <div id="comment">
      {% if page.comments %}
+	<h3>Comments:</h3>
 	<div id="disqus_thread"></div>
 <script>
 
@@ -42,6 +43,7 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-     {% endif %}
+{% else %}
+<h3>Comments are not enabled on this thread.</h3>
+{% endif %}
 </div>

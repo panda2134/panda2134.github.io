@@ -33,3 +33,5 @@ Luogu:[愤怒的小鸟](https://www.luogu.org/problem/show?pid=2831)
 
 
 To Be Done
+
+<script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

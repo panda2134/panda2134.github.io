@@ -19,8 +19,8 @@ MathJax.Hub.Config({
 		</p>
 </div>
 <div id="related">
+    <h3>Related Posts:</h3>
     {% for post in site.related_posts %}
-    	<h3>Related Posts:</h3>
         <ul class="posts">
    			{% for post in site.related_posts limit:3 %}
     		<li><a href="{{ post.url }}">{{ post.title }}</a></li>

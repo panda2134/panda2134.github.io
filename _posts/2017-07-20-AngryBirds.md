@@ -13,7 +13,7 @@ title: "[NOIP2016]愤怒的小鸟"
 --------------
 
 题目链接：
-LYOJ:~~[愤怒的南小鸟](https://ly.men.ci/problem/104
+LYOJ:~~[愤怒的南小鸟](https://ly.men.ci/problem/104)~~
 
 Luogu:[愤怒的小鸟](https://www.luogu.org/problem/show?pid=2831)
 

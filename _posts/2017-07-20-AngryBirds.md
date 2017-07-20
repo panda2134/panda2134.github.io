@@ -4,10 +4,6 @@ categories: ["状压DP","数学"]
 comments: true
 title: "[NOIP2016]愤怒的小鸟"
 ---
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({tex2jax: {inlineMath: ［'$','$'], ['\\(','\\)'］}});
-</script>
-
 <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 --------------

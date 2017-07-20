@@ -1,18 +1,7 @@
 theme: jekyll-theme-cayman
 title: Panda_2134's Blog
 tag: Stay Hungry, Stay Stupid
-markdown: kramdown
 highlighter: rouge
 author: panda_2134
 permalink: /:year/:month/:day/:title
 excerpt_separator: <!--more-->
-kramdown:
-  input: GFM
-  extensions:
-    - autolink
-    - footnotes
-    - smart
-  use_coderay: true
-  syntax_highlighter: rouge
-  coderay:
-    coderay_line_numbers: true

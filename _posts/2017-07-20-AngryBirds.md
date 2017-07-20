@@ -4,13 +4,20 @@ categories: ["状压DP","数学"]
 comments: true
 title: "[NOIP2016]愤怒的小鸟"
 ---
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: ［'$','$'], ['\\(','\\)'］}});
+</script>
 
-<script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js‌​?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 --------------
+
 题目链接：
-LYOJ:~~[愤怒的南小鸟](https://ly.men.ci/problem/104)~~
+LYOJ:~~[愤怒的南小鸟](https://ly.men.ci/problem/104
+
 Luogu:[愤怒的小鸟](https://www.luogu.org/problem/show?pid=2831)
+
+
 题目较长，请在OJ上查看
 
 * 目录
@@ -27,4 +34,6 @@ Luogu:[愤怒的小鸟](https://www.luogu.org/problem/show?pid=2831)
 ## 1.审题
 作过原点的抛物线，经过猪则猪被消灭。求消灭所有猪需要的小鸟数量。
 注意到$1 \leq n \leq 18$ 也就是说
+
+
 To Be Done

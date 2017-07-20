@@ -33,7 +33,7 @@ Luogu:[愤怒的小鸟](https://www.luogu.org/problem/show?pid=2831)
 
 ## 1.审题
 作过原点的抛物线，经过猪则猪被消灭。求消灭所有猪需要的小鸟数量。
-注意到$1 \leq n \leq 18$ 也就是说
+注意到 $$1 \leq n \leq 18$$ 也就是说
 
 
 To Be Done

@@ -20,7 +20,7 @@ title: Panda_2134's Blog
     <div>
       <div style="color:#159957">Categories:</div>
       {% for category in site.categories %}
-      <a href="/showCategory.html?cat={{ category | first }}"><h2>{{ category | first }}</h2></a> &#40;{{ category | last | size }}&#41;
+      <a href="/showCategory.html?cat={{ category | first }}">{{ category | first }}</a> &#40;{{ category | size }}&#41;
       <br/>
       {% endfor %}
     </div>
@@ -28,7 +28,7 @@ title: Panda_2134's Blog
     <div>
       <div style="color:#159957">Tags:</div>
       {% for tag in site.tags %}
-      <a href="/showTags.html?tag={{ tags | first }}"><h2>{{ tags | first }}</h2></a> &#40;{{ tags | last | size }}&#41;W
+      <a href="/showTags.html?tag={{ tags | first }}">{{ tags | first }}</a> &#40;{{ tags | size }}&#41;
       <br/>
       {% endfor %}
     </div>

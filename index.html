@@ -9,7 +9,6 @@ title: Panda_2134's Blog
 .sidebar{
   display: block;
   float: right;
-  color: #ffffff;
   width: 150px;
 }
 .main{
@@ -20,7 +19,7 @@ title: Panda_2134's Blog
     <div>
       <div style="color:#159957">Categories:</div>
       {% for category in site.categories %}
-      <a href="/showCategory.html?cat={{ category | first }}">{{ category | first }}</a> &#40;{{ category | size }}&#41;
+      <a href="/showCategory.html?cat={{ category | first }}">{{ category | first }}</a> &#40;{{ category | last | size }}&#41;
       <br/>
       {% endfor %}
     </div>
@@ -28,7 +27,7 @@ title: Panda_2134's Blog
     <div>
       <div style="color:#159957">Tags:</div>
       {% for tag in site.tags %}
-      <a href="/showTags.html?tag={{ tags | first }}">{{ tag | first }}</a> &#40;{{ tag | size }}&#41;
+      <a href="/showTags.html?tag={{ tag | first }}">{{ tag | first }}</a> &#40;{{ tag | last | size }}&#41;
       <br/>
       {% endfor %}
     </div>

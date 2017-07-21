@@ -31,13 +31,9 @@ Luogu:[愤怒的小鸟](https://www.luogu.org/problem/show?pid=2831)
 注意到
 
 <p>
-$$$
-\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
-\mathbf{i} & \mathbf{j} & \mathbf{k} \\
-\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
-\frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0
-\end{vmatrix} %]
-$$$
+$$
+\leq
+$$
 </p>
 
 To Be Done

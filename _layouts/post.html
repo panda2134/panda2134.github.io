@@ -40,7 +40,7 @@ layout: default
 </div>
 <div id="related">
     <h3>Related Posts:</h3>
-    <ul class="posts">
+    <ul class="posts" style="margin:0px; padding:0px">
         {% for post in site.related_posts limit:3 %}
     		<li><a href="{{ post.url }}">{{ post.title }}</a></li>
   	  	{% endfor %}

@@ -17,8 +17,10 @@ title: Panda_2134's Blog
 	  };
 	  .mainpg{
   		width: 790px;
-      margin: 50px;
 	  }
+    .mainpg-wrap{
+      margin: 50px 0;
+    }
 }
 @media screen and (max-width: 800px){
     .sidebar{
@@ -67,9 +69,10 @@ title: Panda_2134's Blog
       </div>
     </div>
 </div>
-<div class="mainpg">
-  <b style="color:#159957">Recent Blogs</b>
-  <ul>
+<div class="mainpg-wrap"
+  <div class="mainpg">
+    <b style="color:#159957">Recent Blogs</b>
+    <ul>
       {% for post in site.posts %}
       <li>
         <a href="{{ post.url }}"> <h1>{{ post.title }}</h1> </a>
@@ -77,4 +80,5 @@ title: Panda_2134's Blog
       </li>
       {% endfor %}
     </ul>
+  </div>
 </div>

@@ -25,6 +25,14 @@ title: Panda_2134's Blog
     </div>
     <hr/>
     <div>
+      <div style="color:#159957">Tags:</div>
+      {% for tag in site.tags %}
+      <a href="/showTags.html?tag={{ tags | first }}"<h2>{{ tags | first }}</h2></a>({{ tags | last | size }})
+      <br/>
+      {% endfor %}
+    </div>
+    <hr/>
+    <div>
       <div style="color:#159957">神犇们:</div>
       <a href="https://chrt.github.io">chrt</a>
       <br/>

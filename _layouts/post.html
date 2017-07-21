@@ -3,13 +3,6 @@ layout: default
 ---
 
 <script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!--
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: ［'$','$'], ['\\(','\\)'］}
-});
-</script>
--->
 
 <p>
 	<a href="/"> << Back to Index </a>
@@ -17,7 +10,9 @@ MathJax.Hub.Config({
 
 <h2>{{page.title}}</h2>
 <div id="post">
-    <span style="color:#159957">Categories:</span><span>{{ page.categories | array_to_sentence_string :'' }}</span>
+    <span style="color:#159957">In Categories:</span><span>{{ page.categories | array_to_sentence_string :'' }}</span>
+    <br/>
+    <span style="color:#159957">In Tags:</span><span>{{ page.tags | array_to_sentence_string :'' }}</span>
 	<p>
     	{{ content }}
 	</p>

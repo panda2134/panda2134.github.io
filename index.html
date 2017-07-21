@@ -41,6 +41,14 @@ title: Panda_2134's Blog
   padding: 15px;
   border-radius: 3px;
 }
+
+.article-inner{
+  background: #fff;
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  box-shadow: 1px 2px 3px #ddd;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
 </style>
 <div class="sidebar">
     <div class="widget-wrap">
@@ -75,8 +83,10 @@ title: Panda_2134's Blog
     <ul>
       {% for post in site.posts %}
       <li>
+        <div class="article-inner">
         <a href="{{ post.url }}"> <h1>{{ post.title }}</h1> </a>
         {{post.excerpt}}
+        </div>
       </li>
       {% endfor %}
     </ul>

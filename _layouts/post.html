@@ -10,9 +10,22 @@ layout: default
 
 <h2>{{page.title}}</h2>
 <div id="post">
-    <span style="color:#159957">In Categories:</span><span>{{ page.categories | array_to_sentence_string :'' }}</span>
+
+	<span style="color:#159957">In Categories:</span>
+	{% if page.categories.size > 0 %}
+    	<span>{{ page.categories | array_to_sentence_string :'' }}</span>
+    {% else %}
+    	<span>None</span>
+    {% endif %}
+
     <br/>
-    <span style="color:#159957">In Tags:</span><span>{{ page.tags | array_to_sentence_string :'' }}</span>
+
+    <span style="color:#159957">In Tags:</span>
+    {% if pages.tags.size > 0 %}
+    	<span>{{ page.tags | array_to_sentence_string :'' }}</span>
+    {% else %}
+		<span>None</span>
+    {% endif %}
 	<p>
     	{{ content }}
 	</p>

@@ -30,8 +30,7 @@ Luogu:[愤怒的小鸟](https://www.luogu.org/problem/show?pid=2831)
 作过原点的抛物线，经过猪则猪被消灭。求消灭所有猪需要的小鸟数量。
 注意到
 
-$$1 \leq n \leq 18$$
-
+<p>
 $$
 \mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
 \mathbf{i} & \mathbf{j} & \mathbf{k} \\
@@ -39,6 +38,7 @@ $$
 \frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0
 \end{vmatrix} %]
 $$
+</p>
 
 To Be Done
 <script type="text/x-mathjax-config">

@@ -12,8 +12,8 @@ MathJax.Hub.Config({
 <style>
 .sidebar{
   float: right;
-  color: #ffffff
-  width: 50px;
+  color: #ffffff;
+  width: 100px;
 }
 .main{
   width: 790px;
@@ -24,12 +24,14 @@ MathJax.Hub.Config({
       <div style="color:#159957">Categories:</div>
       {% for category in site.categories %}
       <a href="/showCategory.html?cat={{ category | first }}"<h2>{{ category | first }}</h2></a>({{ category | last | size }})
+      <br/>
       {% endfor %}
     </div>
     <hr/>
     <div>
       <div style="color:#159957">神犇们:</div>
       <a href="https://chrt.github.io">chrt</a>
+      <br/>
     </div>
 </div>
 <div class="main">

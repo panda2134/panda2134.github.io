@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Hello,World
-category: myself
+category: 个人
 comments: true
 ---
 

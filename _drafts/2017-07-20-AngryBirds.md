@@ -1,6 +1,7 @@
 ---
 layout: post
-categories: ["状压DP","数学"]
+categories: ["解题报告"]
+tags: ["状压DP","数学"]
 comments: true
 title: "[NOIP2016]愤怒的小鸟"
 ---
@@ -28,10 +29,5 @@ Luogu:[愤怒的小鸟](https://www.luogu.org/problem/show?pid=2831)
 
 ## 1.审题
 作过原点的抛物线，经过猪则猪被消灭。求消灭所有猪需要的小鸟数量。
-<<<<<<< Updated upstream
 由 $$ 2 \le n \le 18 $$
-
 To Be Done
-=======
-注意到
->>>>>>> Stashed changes

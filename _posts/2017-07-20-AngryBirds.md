@@ -15,7 +15,8 @@ Luogu:[愤怒的小鸟](https://www.luogu.org/problem/show?pid=2831)
 
 题目较长，请在OJ上查看
 
-* 目录
+- 目录
+* toc
 {:toc}
 
 ## 0.题记

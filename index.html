@@ -26,8 +26,8 @@ title: Panda_2134's Blog
     <hr/>
     <div>
       <div style="color:#159957">Tags:</div>
-      {% for tag in site.tags %}
-      <a href="/showTags.html?tag={{ tag | first }}">{{ tag | first }}</a> &#40;{{ tag | last | size }}&#41;
+      {% for mtag in site.tags %}
+      <a href="/showTags.html?tag={{ mtag | first }}">{{ mtag | first }}</a> &#40;{{ mtag | last | size }}&#41;
       <br/>
       {% endfor %}
     </div>

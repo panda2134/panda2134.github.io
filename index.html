@@ -6,13 +6,15 @@ title: Panda_2134's Blog
 <script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <style>
-.sidebar{
-  display: block;
-  float: right;
-  width: 150px;
-}
-.main{
-  width: 790px;
+@media screen and (min-width: 800px) {
+    .sidebar{
+		display: block;
+  		float: right;
+  		width: 150px;
+	};
+	.mainpg{
+  		width: 790px;
+	}
 }
 </style>
 <div class="sidebar">
@@ -38,7 +40,7 @@ title: Panda_2134's Blog
       <br/>
     </div>
 </div>
-<div class="main">
+<div class="mainpg">
   <h1>Recent Blogs</h1>
   <ul>
       {% for post in site.posts %}

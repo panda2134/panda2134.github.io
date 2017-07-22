@@ -5,3 +5,4 @@ highlighter: rouge
 author: panda_2134
 permalink: /:year/:month/:day/:title
 excerpt_separator: <!--more-->
+markdown: kramdown

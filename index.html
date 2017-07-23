@@ -11,15 +11,18 @@ title: Panda_2134's Blog
     }
 @media screen and (min-width: 800px) {
     .sidebar{
-		  display: block;
+		display: block;
   		float: right;
   		width: 150px;
 	  };
 	  .mainpg{
+		
   		width: 790px;
 	  }
     .mainpg-wrap{
-      margin: 50px 0;
+	  width: 800px;
+      margin: 50px ;
+	  float: left;
     }
 }
 @media screen and (max-width: 800px){
@@ -77,13 +80,13 @@ title: Panda_2134's Blog
       </div>
     </div>
 </div>
-<div class="mainpg-wrap"
+<div class="mainpg-wrap">
   <div class="mainpg">
     <h3><b style="color:#000000">Recent Blogs</b></h3>
     <ul>
       {% for post in site.posts %}
       <li>
-        <div>
+        <div class="article-inner">
         <a href="{{ post.url }}" style="color:#154;"> <h1>{{ post.title }}</h1> </a>
         {{post.excerpt}}
         <a href="{{ post.url }}" style="color:#fff;"> Read More... </a>

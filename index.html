@@ -7,7 +7,7 @@ title: Panda_2134's Blog
 
 <style>
     ul {
-      list-style:square;
+      list-style:none;
     }
 @media screen and (min-width: 800px) {
     .sidebar{
@@ -22,7 +22,6 @@ title: Panda_2134's Blog
     .mainpg-wrap{
 	  width: 800px;
       margin: 50px ;
-	  float: left;
     }
 }
 @media screen and (max-width: 800px){
@@ -46,6 +45,7 @@ title: Panda_2134's Blog
 }
 
 .article-inner{
+  padding:1rem;
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
@@ -91,7 +91,6 @@ title: Panda_2134's Blog
         {{post.excerpt}}
         <a href="{{ post.url }}" style="color:#fff;"> Read More... </a>
         </div>
-        <hr/>
       </li>
       {% endfor %}
     </ul>

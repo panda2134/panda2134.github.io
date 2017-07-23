@@ -23,7 +23,7 @@ layout: default
     <br/>
 
     <span style="color:#159957">In Tags:</span>
-    {% if pages.tags.size > 0 %}
+    {% if page.tags.size > 0 %}
     	<span>{{ page.tags | array_to_sentence_string :'' }}</span>
     {% else %}
 		<span>None</span>

@@ -28,19 +28,19 @@ category: '解题报告'
    显然可以定义状态$$f(i,j)$$，表示以$$(i,j)$$为右下角的最大可能正方形的边长。
    （这里借用下[yangle61][2]课件里面的几张图）
 
-![homerange01][https://panda2134.github.io/img/homerange01.png]
+![homerange01](https://panda2134.github.io/img/homerange01.png)
 
  - 进行状态转移，要对解做出限制
    当**$$(i,j)$$处本身不是障碍**时：
 
    画出这个可能的最大正方形，把有标记的方块，即障碍块沿着这个正方形的边界移动，试着去寻找它的大小和$$f(i-1,j)$$,$$f(i,j-1)$$之间的联系。
 
-![homerange02][https://panda2134.github.io/img/homerange02.png]
+![homerange02](https://panda2134.github.io/img/homerange02.png)
 
    通过画图可以发现，一定有 $$f(i,j) \leq f(i-1,j) + 1$$, $$f(i,j) \leq f(i,j-1) + 1$$。
    这样就完全地限制了$$f(i,j)$$的取值吗？显然没有。如上图中2,4的情况，并没有被$$f(i-1,j)$$，$$f(i,j-1)$$严格地限制。
 
-![homerange03][https://panda2134.github.io/img/homerange03.png]
+![homerange03](https://panda2134.github.io/img/homerange03.png)
 
    显然，$$f(i,j)$$还被$$f(i-1,j-1)$$所限制，即须有$$f(i,j) \leq f(i-1,j-1) + 1$$。
    再画画图，发现，这样就完全地限制了$$f(i,j)$$的取值。

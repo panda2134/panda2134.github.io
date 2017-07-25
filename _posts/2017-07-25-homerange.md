@@ -101,4 +101,4 @@ int main(){
 {%endhighlight%}
 
  [1]:https://www.luogu.org/problem/show?pid=2733
- [2]:blog.csdn.net/yangle61
+ [2]:https://blog.csdn.net/yangle61

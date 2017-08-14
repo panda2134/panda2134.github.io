@@ -90,6 +90,6 @@ int main(){
 
 ### 特点：先进队列的元素先出，维护某个滑动窗口的单调性。
 
-<center>To Be Done. QAQ.</center>
+<center>To Be Done.</center>
 
  [1]:http://www.lydsy.com/JudgeOnline/problem.php?id=1012

@@ -3,9 +3,28 @@ layout: default
 ---
 
 <script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<style>
+	@font-face{
+		font-family:"PTsans";
+		src:url("../assets/font/PTsans.ttf");
+		font-size: 25px;
+	}
+	@font-face{
+		font-family:"SourceCodePro";
+		src:url("../assets/font/SourceCodePro-Regular.ttf");
+		font-size: 25px;
+	}
+	div.postpg {
+		font-family:'PTsans';
+		font-family:'Microsoft Yahei Light','Microsoft Yahei','simsun';
+	}
+	code{
+		font-family:'SourceCodePro';
+	}
+</style>
 
 
-
+<div class="postpg">
 <p>
 	<a href="/"> << Back to Index </a>
 </p>
@@ -21,7 +40,6 @@ layout: default
     {% endif %}
 
     <br/>
-
     <span style="color:#159957">In Tags:</span>
     {% if page.tags.size > 0 %}
     	<span>{{ page.tags | array_to_sentence_string :'' }}</span>
@@ -62,4 +80,5 @@ gitment.render('comm1');
 	{% else %}
 	<h3>Comments are not enabled on this thread.</h3>
 {% endif %}
+</div>
 </div>

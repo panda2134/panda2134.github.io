@@ -15,8 +15,7 @@ layout: default
 		font-size: 25px;
 	}
 	div.postpg {
-		font-family:'PTsans';
-		font-family:'Microsoft Yahei Light','Microsoft Yahei','simsun';
+		font-family:'PTsans','Microsoft Yahei Light','Microsoft Yahei','simsun',sans-serif;
 	}
 	code{
 		font-family:'SourceCodePro';
@@ -31,7 +30,6 @@ layout: default
 
 <h2>{{page.title}}</h2>
 <div id="post">
-
 	<span style="color:#159957">In Categories:</span>
 	{% if page.categories.size > 0 %}
     	<span>{{ page.categories | array_to_sentence_string :'' }}</span>

@@ -27,8 +27,6 @@ title: '浴谷八连测-R7-B'
 ## 代码
 ```cpp
 #include <bits/stdc++.h>
-#include <iostream>
-#include <string>
 #define rint register int
 using namespace std;
 typedef unsigned long long ULL;

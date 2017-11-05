@@ -90,11 +90,11 @@ void exgcd(int a, int b, int &d, int &x, int &y) {
  又由二项式定理：          
 \\[
 \begin{align*} 
-(b+1)^p & \equiv b^p+1\\\\     
- & \equiv [(b-1)+1]^p+1\\\\     
- & \equiv (b-1)^p+2\\\\     
- & \equiv \dots\\\\     
- & \equiv [b-(b-1)]^p+b\\\\     
+(b+1)^p & \equiv b^p+1\\     
+ & \equiv [(b-1)+1]^p+1\\     
+ & \equiv (b-1)^p+2\\     
+ & \equiv \dots\\     
+ & \equiv [b-(b-1)]^p+b\\     
  & \equiv b+1  \pmod p     
 \end{align*}  
 \\]

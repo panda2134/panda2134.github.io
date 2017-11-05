@@ -89,7 +89,6 @@ void exgcd(int a, int b, int &d, int &x, int &y) {
  因此$$p | \tbinom{p}{m}$$。           
  又由二项式定理：          
  \\[
-\large 
 \begin{align} 
 (b+1)^p & \equiv b^p+1\\     
  & \equiv [(b-1)+1]^p+1\\     

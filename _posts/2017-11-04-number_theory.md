@@ -88,16 +88,16 @@ void exgcd(int a, int b, int &d, int &x, int &y) {
 当$$p \in \mathbb{P}, m \neq 1且m \neq p$$时，分子的$$p$$不可能被分母约去。
  因此$$p | \tbinom{p}{m}$$。           
  又由二项式定理：          
- \\[
-\begin{align} 
+\\[
+\begin{align*} 
 (b+1)^p & \equiv b^p+1\\     
  & \equiv [(b-1)+1]^p+1\\     
  & \equiv (b-1)^p+2\\     
  & \equiv \dots\\     
  & \equiv [b-(b-1)]^p+b\\     
  & \equiv b+1  \pmod p     
-\end{align}  
- \\]
+\end{align*}  
+\\]
 令$$a=b-1$$，则
 \\[a^p \equiv a \pmod p\\]
 即

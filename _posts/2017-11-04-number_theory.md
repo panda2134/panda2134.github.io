@@ -91,13 +91,13 @@ void exgcd(int a, int b, int &d, int &x, int &y) {
  \\[
 \large 
 \begin{align} 
-(b+1)^p & \equiv b^p+1\\
- & \equiv [(b-1)+1]^p+1\\
- & \equiv (b-1)^p+2\\
- & \equiv \dots\\
- & \equiv [b-(b-1)]^p+b\\
- & \equiv b+1  \pmod p
-\end{align}
+(b+1)^p & \equiv b^p+1\\     
+ & \equiv [(b-1)+1]^p+1\\     
+ & \equiv (b-1)^p+2\\     
+ & \equiv \dots\\     
+ & \equiv [b-(b-1)]^p+b\\     
+ & \equiv b+1  \pmod p     
+\end{align}  
  \\]
 令$$a=b-1$$，则
 \\[a^p \equiv a \pmod p\\]

@@ -2,7 +2,7 @@
 layout: post
 comments: true
 categories: ['解题报告']
-tags: ["最短路","图论","DP","序列型DP"]
+tags: ["最短路","图论","动态规划","序列型DP"]
 title: '[ZJOI2006]物流运输'
 ---
 链接:[Luogu-P1772][1]

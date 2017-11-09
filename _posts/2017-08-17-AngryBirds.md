@@ -179,3 +179,5 @@ int main() {
     return 0;
 }
 ```
+
+**UPD:**在uoj会被卡精度。换成long double就好了。

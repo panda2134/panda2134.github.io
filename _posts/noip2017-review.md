@@ -1,0 +1,155 @@
+---
+layout: post
+comments: true
+categories: ['总结']
+tags: ["最短路","图论","动态规划"]
+title: 'NOIP总结'
+---
+
+## 知识点
+
+### 动态规划
+
+#### 序列DP
+- 注意边界情况的特殊处理。可以设计特殊长度的序列并且输出数组来进行检查
+- 有时需要用数据结构优化。一般是单调数据结构（单调队列、单调栈）
+- 注意排列的一一对应性质，有时候可以通过映射转换问题
+- 如果可以的话不要把部分序列都扫一遍；考虑$$O(1)$$转移
+#### 二维平面DP
+- 画出图来，再用以某个点为右下角的正方形定义状态，最后在点的上方和左边寻找转移。注意：沿着某个区域移动“障碍”块是常用的方法。e.g.[Home on the range][homerange]
+#### 背包DP
+注意建模：是什么背包？什么是物品？什么是价值？选择题目要求的作为物品价值，有时并不很可行，此时应该尝试把它作为体积。
+**0-1背包**
+不能从已经拿了此物品的状态转移。
+区分“装满”型和“恰好装满”型：对于“恰好装满”型，令`f[0]=0`，其他的`f[i]=-inf`。因为初始状态下只有空背包合法，其他背包状态都非法！利用这点可以定义泛化物品。
+
+滚动数组
+```cpp
+void ZeroOnePack(int ci, int wi) {
+ for(int j=C; j>=ci; j--)
+  opt[j]=max(opt[j], opt[j-ci]+wi);
+}
+```
+非滚动数组
+```cpp
+for(int i=1; i<=N; i++)
+ for(int j=C; j>=V[i]; j--)
+  opt[i][j]=max(opt[i][j], opt[i-1][j-V[i]]+W[i]);
+```
+**完全背包**
+考虑在已选的基础上“加选”物品。
+
+滚动数组
+```cpp
+void CompletePack(int ci, int wi) {
+ for(int j=ci; j<=C; j++)
+  opt[j]=max(opt[j], opt[j-ci]+wi);
+}
+```
+*非滚动数组*(在滚动不方便思考的情况下使用。e.g.[Flappy Birds][flappy])
+```cpp
+for(int i=1; i<=N; i++)
+ for(int j=ci; j<=C; j++)
+  opt[i][j]=max(opt[i][j], 
+   max(opt[i-1][j-ci], opt[i][j-ci])+wi);
+```
+**多重背包**
+考虑对要拿的物品进行二进制分解
+```cpp
+void MultiPack(int ci, int wi, int k){
+ if(ci*k > C) CompletePack(ci, wi);
+ else {
+  for(int i=1; i<k; i<<=1) {
+   ZeroOnePack(i*ci, i*wi);
+   k-=i;
+  }
+  ZeroOnePack(k*ci, k*wi);
+ }
+```
+**二维背包**
+ - 可以把总选取物品数目看作第二维体积限制
+ - “加一维”来满足新限制
+**分组背包**
+每组物品最多选一件，互相排斥
+```cpp
+for(int i=1; i<=G; i++)
+ for(int j=C; j>=0; j--)
+  for(int k=1; k<=cnt[i]; k++) {
+   Item u=grp[k];
+   if(u.c <= j)
+    opt[j]=max(opt[j], opt[j-u.c]+u.w);
+  }
+```
+#### 路径行走DP
+把行走的人的位置加入状态
+#### 状态压缩DP
+记住位运算不用`unsigned`的话位移可能出锅。
+把相关的量加入状态，而非无脑压位（学校食堂）
+
+### 图论
+#### 差分约束系统
+ - 化归成标准形式
+ - 用DFS版本的SPFA，记得`dist`初值为0。一般的判负环都这样做，不过必须从每个点开始跑一次DFS。这样做的时候**不能用超级源点**！
+
+## 注意事项 
+```cpp 
+isgraph() + ' ' = isprint()
+isprint() + '\n' = all printable characters
+```
+快速幂中模乘法要打括号！
+可以这么写：
+```cpp
+#define ModAdd(x,y) ((x)%MOD+(y)%MOD)%MOD
+#define ModSub(x,y) ((x)%MOD-(y)%MOD+MOD)%MOD
+#define ModMul(x,y) ((1ll*(x)%MOD) * (1ll*(x)%MOD))%MOD
+int fastpow(int a, int x) {
+ int ret=1;
+ while(x) {
+  if(x&1) ret=ModMul(ret,a);
+  x>>=1; a=ModMul(a,a);
+ }
+ return ret;
+}
+```
+<!--more-->
+## 错误与不足
+####Mayan Game
+[Diff1](https://www.diffchecker.com/yFS3EOQD)$$\rightarrow$$[Diff2](https://www.diffchecker.com/qWzlWEt3)
+1.带有`else`的连续`if`,没有考虑非法时先跳出 
+2.拖动后一定要先下落一次
+3.漏掉剪枝：只向右边拖动！因为向右拖动与从右边格子向左拖动是等价的！
+**总结**：对模拟和暴力类题目，一定要思路清晰，多问自己细节是什么，同时设计最劣数据进行测试！
+
+####[USACO]A Game
+可以把两个人都加入状态，但是我们只需要考虑先手即可！
+博弈类DP的实质是先后手之间的转换。既然两个人都执行最佳策略，不妨设$$f(i,j)$$代表还有$$[i,j]$$未取时先手的最大收益。
+于是显然有：
+$$f(i,j)=\max \begin{cases} 
+a_i + sum_{i+1,j} - f(i+1,j) \\
+a_j + sum_{i,j-1} - f(i,j-1)
+\end{cases}
+$$
+原因很简单，当前先手的人考虑的是拿哪边收益最大，即对方收益最小。
+由于当前先手拿了之后先手互换，当前先手一定要选择另一个人*按照最优策略拿*的收益**最小**的分支转移。
+**总结**：弄清先后手的收益之间的关系，抓住先后手互换的条件，是博弈论DP的关键。
+
+#### 愤怒的小鸟
+有2种方法可以从70分优化到100分。
+法1：注意到**浮点数计算是性能瓶颈**。于是预处理选定$$(0,0)$$与某2个点之后能打下其他点的集合。
+法2：我们只关心能不能打掉所有的猪，而不关心有没有刷完所有的中间状态。与其说每次$$O(n^2)$$地枚举两只猪确定抛物线再转移，不妨固定打下编号最小的猪，再去$$O(n)$$地枚举第二只猪，因为编号最小的猪迟早会被打下来。这样复杂度就从$$O(n^2 \cdot 2^n)$$降低到了$$O(n \cdot 2^n)$$，应该也可以通过。
+
+#### 创意吃鱼法
+高维乘低维数组，未注意低维的大小，MLE一次。
+递推时未注意边界情况，WA一次。
+
+#### 换教室
+注意floyd！
+邻接矩阵初始为$$\inf$$，但是**自己到自己的边权为0**，读入时注意重边，取**最小**的！
+
+#### 子串
+注意合理外推。子串可以看成整体，这样就成了一个类似LCS问题的题目了。
+
+####
+
+ [homerange]: https://panda2134.tk/2017/07/25/homerange
+ [flappy]: https://www.luogu.org/problemnew/show/1941

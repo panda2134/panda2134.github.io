@@ -188,7 +188,7 @@ SPFA-Edmonds-Karp / Primal-Dual
 
 
 残量网络如图。图上 **边权为费用，容量均为1** 。  
-<img height="300" width="400" src="..\img\NetworkFlow\NegativeCycle.png"></img>
+<img height="300" width="400" src="/img/NetworkFlow/NegativeCycle.png"></img>
 
 ### 带负环的最小费用最大流
 
@@ -213,7 +213,7 @@ SPFA-Edmonds-Karp / Primal-Dual
 ## 上下界可行流[^4]
 
 ​	如下图，为一条下界为 $$2$$ ，上界为 $$5$$ 的弧。
-![BoundedFlow-1](../img/NetworkFlow/BoundedFlow1.png)
+![BoundedFlow-1](/img/NetworkFlow/BoundedFlow1.png)
 ​	我们把下界非 0 的弧拆成必要弧和附加弧。必要弧一定要满流，附加弧不一定。
 
 ​	如何让必要弧满流？用附加源点。用 Dinic 找出从 ss 到 tt 的最大流，如果所有和 ss, tt 相关的边都满流，则求出了一个可行流。
@@ -224,7 +224,7 @@ SPFA-Edmonds-Karp / Primal-Dual
 
 ​	下图为一个要求解上下界网络流的残量网络。
 
-![BoundedFlow-2](../img/NetworkFlow/BoundedFlow2.png)
+![BoundedFlow-2](/img/NetworkFlow/BoundedFlow2.png)
 ​	可以看出，最后一次增广刚好撤销了 $$t \rightarrow s$$ 边上的流量！于是最大流为2。
 
 ​	由于代表下界的必要弧已经拿出了原来的图，显然不可能增广到流量低于下界，所以一定合法。
@@ -255,7 +255,7 @@ $$
 
 ​	注意：可以有负环。大体思想就是把负权费用流和上下界费用流合二为一。(a) - (c) 步骤是连边 $$<t,s>$$ ，容量 $$\infty$$ ，费用0，把上下界最小费用最大流转为上下界最小费用可行流处理。(d) 步骤是在可行流基础上求最小费用最大流。注意：总的流量等于 (d) 步骤增广的流量，但是费用等于所有负权值的和+两次增广的费用。
 
-![BoundedCostflow](../img/NetworkFlow/BoundedCostflow.png)
+![BoundedCostflow](/img/NetworkFlow/BoundedCostflow.png)
 
 ## 上下界 $s-t$ 最小费用流
 

@@ -1,5 +1,5 @@
 ---
-title: '网络流常见建模总结'
+title: "网络流常见建模总结"
 categories: ["总结"]
 tags: ["网络流","图论","二分图"]
 comments: true
@@ -14,11 +14,11 @@ layout: post
 
 **UPD:**发现洛谷上面的网络流题目严重不全……这么多年省选也不会只考了10道网络流啊……翻了翻hzwer的博客，屯了40几题，准备先用一个星期做个二十几道，剩下的边练DP边带着做   
 
-# 我已经做了 0 题
+# 我已经做了 6 题 
 
 <!--more-->
 
-> bzoj4205 bzoj3308 bzoj1283 bzoj3894 bzoj1797 bzoj3996 bzoj3876 bzoj2756 bzoj2718 bzoj2007
+> ✅bzoj4205 bzoj3308 ✅bzoj1283 ✅bzoj3894 bzoj1797 bzoj3996 ✅bzoj3876 ✅bzoj2756 bzoj2718 ✅bzoj2007
 > bzoj2893 bzoj3158 bzoj1822 bzoj2929 bzoj1520 bzoj2324 bzoj1324 bzoj3698 bzoj2561 bzoj3396
 > bzoj3504 bzoj2502 bzoj2055 bzoj1532 bzoj1930 bzoj2661 bzoj1711 bzoj1458 bzoj3280 bzoj3275
 > bzoj2768 bzoj2245 bzoj1391 bzoj2127 bzoj2132 bzoj3171 bzoj1934 bzoj2424 bzoj1305 bzoj1189
@@ -133,7 +133,14 @@ layout: post
 #### 建模
 
 - 涉及到集合的划分问题，就想到最小割。(uvaoj1515，ZJOI狼和羊的故事)
-- 有向图的最大闭合子图。选 u, v 中的一个就会产生某个代价，但是都选代价不会更高。 s 向每个非负权值点连边，每个负权值点向 t 连边，求出割 $$[S,T]$$ 后， $$S-\{s\}$$ 即最大闭合子图，其权值为 $$\sum w_+ - c[S,T]$$ 。（NOI2009植物大战僵尸:注意虽然没有自环，但是可能连环保护导致无敌，而且无敌点保护的点也无敌）
+
+- 有向图的最大闭合子图。
+> 选 u, v 中的一个就会产生某个代价，但是都选不会造成更大影响。 
+- s 向每个非负权值点连边，每个负权值点向 t 连边，求出割 $$[S,T]$$ 后， $$S-\{s\}$$ 即最大闭合子图，其权值为 $$\sum w_+ - c[S,T]$$ 。
+- 典型题目：
+- NOI2009植物大战僵尸: 注意虽然没有自环，但是可能连环保护导致无敌，而且无敌点保护的点也无敌
+- 文理分科：对称关系，不好下手？尝试找出“基准状态”，把对应的状态看成选/不选的关系。这样就把“选什么”的问题转为了“选不选”的问题。不妨假设最开始的时候全部选择文科。现在某些人改选理科，看能否增大收益。周围4个人+自己都选理科，可以获得某个收益。一般地，在多个条件都满足的情况下获得收益的模型，可以看成是一种“推导”，从而转化为最大权闭合子图。这里把每个人拆成3个点，代表相应决策：那个人自己选理科、那个人和周围至少1个选理科，那个人和周围都选理科。然后就可以容易地转化为最大权闭合子图求解。
+
 - 无向图的最大密度子图。边和点都带有权值，求一个子图，最大化
 
 $$
@@ -155,20 +162,20 @@ $$
 SPFA-Edmonds-Karp / Primal-Dual 
 
 比较如下：（测试用题为洛谷费用流模板）
-
-| Algorithm                                              | Accepted | Time   |
-| :----------------------------------------------------- | -------- | ------ |
-| Dijkstra+Pairing Heap+Primal Dual(O2)                  | Yes      | 820ms  |
-| Dijkstra+std::priority_queue+Primal Dual(O2)           | Yes      | 832ms  |
+<!--这个锅了！！！原始对偶写的有锅！！！改天重测……-->
+| Algorithm                                | Accepted | Time   |
+| :--------------------------------------- | -------- | ------ |
+| Dijkstra+Pairing Heap+Primal Dual(O2)    | Yes      | 820ms  |
+| Dijkstra+std::priority_queue+Primal Dual(O2) | Yes      | 832ms  |
 | Dijkstra+Binary Heap with decrease_key+Primal Dual(O2) | Yes      | 888ms  |
-| Dijkstra+Pairing Heap+Primal Dual                      | Yes      | 1236ms |
-| Dijkstra+Binary Heap with decrease_key+Primal Dual     | Yes      | 1528ms |
-| SPFA+Primal Dual(O2)                                   | Yes      | 1548ms |
-| SPFA+Edmond Karp                                       | Yes      | 1596ms |
-| SPFA+Primal Dual                                       | Yes      | 2184ms |
-| Dijkstra+std::priority_queue+Primal Dual               | No       | 3036ms |
-| SPFA+SLF+Primal Dual(O2)                               | No       | 3204ms |
-| SPFA+SLF+Primal Dual                                   | No       | 4740ms |
+| Dijkstra+Pairing Heap+Primal Dual        | Yes      | 1236ms |
+| Dijkstra+Binary Heap with decrease_key+Primal Dual | Yes      | 1528ms |
+| SPFA+Primal Dual(O2)                     | Yes      | 1548ms |
+| SPFA+Edmond Karp                         | Yes      | 1596ms |
+| SPFA+Primal Dual                         | Yes      | 2184ms |
+| Dijkstra+std::priority_queue+Primal Dual | No       | 3036ms |
+| SPFA+SLF+Primal Dual(O2)                 | No       | 3204ms |
+| SPFA+SLF+Primal Dual                     | No       | 4740ms |
 
 ## 建模
 
@@ -250,6 +257,7 @@ $$
 ## 上下界最小费用可行流
 
 ​	同样是拆边法。但是不能允许必要弧退流。于是我们把必要弧和费用流的附加弧合并处理。对于非负费用边，我们把必要弧拉出来，建立弧 $$<ss, v>, <u, tt>$$ ，其容量均为下界，但是只有 $$<ss,v>$$ 带上与原弧相同的费用，从而避免必要弧重复计费。对于负费用边，见下图中(a), (b), (c)。
+	注意，在实际实现的时候，**一定要合并重边**！！！（AHOI支线剧情）方法是记录每个节点的盈余/亏欠流量，最后一起建与 $$ss, tt$$ 有关的边，并且预先记录流满所需费用。
 
 ## 上下界 $s-t$ 最小费用最大流
 
@@ -262,4 +270,4 @@ $$
 ​	同上下界 $$s-t$$ 最小费用最大流，不过要把求最小费用最大流改成求最小费用流，即在 $$s-t$$ 距离非负时停止增广。
 
 [^4]: 参考了[liu_runda的Blog](http://www.cnblogs.com/liu-runda/p/6262832.html)
-[^5]: 见[__stdcall's Blog](http://www.cnblogs.com/mlystdcall/p/6734852.html)
+[^5]: 见[__stdcall的Blog](http://www.cnblogs.com/mlystdcall/p/6734852.html)

@@ -58,7 +58,7 @@ $$
                     
 证明:       
                   
-$$\Rightarrow:$$           
+⇒:        
             
 $$             
 \begin{align*}
@@ -71,7 +71,7 @@ $$
 	\end{align*}
 $$          
           
-$$\Leftarrow:$$    
+⇐:    
            
 $$          
 \begin{align*}
@@ -100,7 +100,7 @@ $$
              
 证明:            
                   
-$$\Rightarrow:$$                        
+⇒:                        
                 
 $$
 \begin{align*}
@@ -112,7 +112,7 @@ $$
 \end{align*}
 $$
                 
-$$\Leftarrow:$$              
+⇐:            
                    
 $$
 \begin{align*}

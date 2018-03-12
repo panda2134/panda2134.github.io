@@ -7,16 +7,9 @@ tags: ["数论","莫比乌斯反演"]
 ---
 
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
-
-
 ## 莫比乌斯函数
 
-我们定义
+我们定义    
 $$
 \begin{equation}
 \mu(n) = \begin{cases}
@@ -26,15 +19,15 @@ $$
 \end{cases}
 \end{equation} \label{mobius-func}
 $$
-为什么这么定义?为了满足性质:
+为什么这么定义?为了满足性质:      
 $$
-\begin{equation} \sum_{d \backslash n} \mu (d) = [n = 1] \end{equation} \label{mobius-sum}
+\begin{equation} \sum_{d \backslash n} \mu (d) = [n = 1] \end{equation}
 $$
-下面我们来证明 $\eqref{mobius-sum}$ 式. 
+下面我们来证明上式.     
 
-当 $$n = 1$$ 时显然成立.
+当 $$n = 1$$ 时显然成立.      
 
-当 $$n \ge 2$$ 时,不妨设 $$n = \prod_{i=1}^k p_i^{\alpha_i}$$.  $$n$$ 的恰含有 $$r$$ 个互异质因数的因子有$$\binom{k}{r}$$ 个.当它含有奇数个互异质因子时, 对答案贡献为 $$-1$$ , 含偶数个互异质因子时贡献为 $$1$$ .于是总的贡献为:
+当 $$n \ge 2$$ 时,不妨设 $$n = \prod_{i=1}^k p_i^{\alpha_i}$$.  $$n$$ 的恰含有 $$r$$ 个互异质因数的因子有$$\binom{k}{r}$$ 个.当它含有奇数个互异质因子时, 对答案贡献为 $$-1$$ , 含偶数个互异质因子时贡献为 $$1$$ .于是总的贡献为:      
 $$
 \begin{align*}
 \sum_{d \backslash n} \mu (d) &= \binom{n}{0} - \binom{n}{1} + \binom{n}{2}- \cdots \\
@@ -43,9 +36,9 @@ $$
 &= 0
 \end{align*}
 $$
-得证.
+得证.    
 
-从上面的证明过程可以看出, 其实莫比乌斯函数就是在模拟容斥原理, 不过容斥的对象是唯一分解式中的指数罢了. 把不同的质因数看成盒子, 指数看成球, 就转为了经典的球-盒模型.
+从上面的证明过程可以看出, 其实莫比乌斯函数就是在模拟容斥原理, 不过容斥的对象是唯一分解式中的指数罢了. 把不同的质因数看成盒子, 指数看成球, 就转为了经典的球-盒模型.      
 
 ## 莫比乌斯反演
 
@@ -57,9 +50,9 @@ F(n) = \sum_{d \backslash n} f(d) \Leftrightarrow f(n) = \sum_{d \backslash n} \
 \end{align}
 $$
 
-证明:
+证明:       
 
-$$\Rightarrow:$$
+$$\Rightarrow:$$     
 $$
 \begin{align*}
 	\sum_{d \backslash n} \mu(d) F(\frac{n}{d})	&= \sum_{d \backslash n} \mu(d) \sum_{k \backslash (n/d)} f(k) \\
@@ -70,7 +63,7 @@ $$
 	&= f(n)
 	\end{align*}
 $$
-$$\Leftarrow:$$
+$$\Leftarrow:$$      
 $$
 \begin{align*}
 	\sum_{d \backslash n} f(d) &= \sum_{d \backslash n} \sum_{k \backslash d} \mu(k) F(\frac{d}{k}) \\
@@ -81,22 +74,22 @@ $$
 	&= F(n)
 	\end{align*}
 $$
-得证.
+得证.          
 
 ### 形式2:枚举倍数
 
-这个形式比较常用.
+这个形式比较常用.           
 
-我们不妨假设 $$n, d \le N$$ . 则:
+我们不妨假设 $$n, d \le N$$ . 则:            
 $$
 F(n) = \sum_{n \backslash d}f(d) \Leftrightarrow f(n) = \sum_{n \backslash d} \mu(\frac{d}{n})F(d)
 $$
 
-这个比较难证明……想了好久……
+这个比较难证明……想了好久……            
 
-证明:
+证明:            
 
-$$\Rightarrow:$$
+$$\Rightarrow:$$            
 $$
 \begin{align*}
 \sum_{n \backslash d} \mu(\frac{d}{n}) F(d) &= \sum_{k=1}^{+\infty}  \mu(k) F(nk) \\
@@ -106,7 +99,7 @@ $$
 &= f(t)
 \end{align*}
 $$
-$$\Leftarrow:$$
+$$\Leftarrow:$$            
 $$
 \begin{align*}
 	\sum_{n \backslash d} f(d)  &= \sum_{k=1}^{+\infty}f(nk) \\
@@ -120,7 +113,7 @@ $$
 $$
 
 
-得证.
+得证.            
 
 
 
@@ -130,9 +123,9 @@ $$
 
 -----------------------------
 
-参考链接:
+参考链接:                
 
-**强烈推荐:**[PoPoQQQ的PPT](https://wenku.baidu.com/view/fbec9c63ba1aa8114431d9ac.html)
+**强烈推荐:**[PoPoQQQ的PPT](https://wenku.baidu.com/view/fbec9c63ba1aa8114431d9ac.html)                 
 
-[莫比乌斯反演定理证明](http://blog.csdn.net/outer_form/article/details/50588307)
+[莫比乌斯反演定理证明](http://blog.csdn.net/outer_form/article/details/50588307)              
 

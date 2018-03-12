@@ -42,12 +42,26 @@ title: '数论基础'
 即
 \\[\large ax+by=ay'+b\cdot(x'-\lfloor \frac{a}{b} \rfloor \cdot y')\\]
 显然有
-\\[\large \begin{cases} x=y'\\ y=x'-\lfloor \frac{a}{b} \rfloor \cdot y' \end{cases}\\]
+
+$$
+\large 
+\begin{cases} 
+x=y'\\ 
+y=x'-\lfloor \frac{a}{b} \rfloor \cdot y' 
+\end{cases}
+$$
+
 于是扩展欧几里得定理得证。
 #### 多解
 如果上述方程有解，则有**无穷组**解。初始解 $$(x_0,y_0)$$ 保证 $$|x_0|+|y_0|$$ 最小。
 而且有：
-\\[ \large \begin{cases} x=x_0-t \cdot \frac{b}{(a,b)}\\ y \,=y_0+t \cdot \frac{a}{(a,b)} \end{cases}\\]
+$$
+\large 
+\begin{cases} 
+x=x\_0-t \cdot \frac{b}{(a,b)}\\
+y \,=y\_0+t \cdot \frac{a}{(a,b)} 
+\end{cases}
+$$
 其中$$ t \in \mathbb{Z}$$。
 #### 解同余方程
 *To Be Done*
@@ -96,3 +110,21 @@ void exgcd(int a, int b, int &d, int &x, int &y) {
 得证。
 ### 例题
 *To Be Done*
+
+
+
+### 底和顶
+
+定义:
+$$
+n = \lfloor x \rfloor \Leftrightarrow n \le x < n+1 \\
+n = \lceil x \rceil \Leftrightarrow n-1 < x \le n
+$$
+常用不等式:
+$$
+x < n \Leftrightarrow \lfloor x \rfloor < n \\
+n < x \Leftrightarrow n < \lceil x \rceil \\
+x \le n \Leftrightarrow \lceil x  \rceil \le n \\
+n \le x \Leftrightarrow n \le \lfloor x \rfloor
+$$
+常记为"左实底,右实顶,若取等,则相反".

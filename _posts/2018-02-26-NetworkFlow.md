@@ -22,7 +22,7 @@ layout: post
 > ✅bzoj2893 bzoj3158 ✅bzoj1822 bzoj2929 bzoj1520 bzoj2324 bzoj1324 bzoj3698 bzoj2561 bzoj3396
 > bzoj3504 bzoj2502 bzoj2055 bzoj1532 bzoj1930 bzoj2661 bzoj1711 bzoj1458 bzoj3280 bzoj3275
 > bzoj2768 bzoj2245 bzoj1391 bzoj2127 bzoj2132 bzoj3171 bzoj1934 bzoj2424 bzoj1305 bzoj1189
-> bzoj1066 bzoj1191 cf498c vijos1891  poj2396 zoj3229 codevs1222 雅礼集训day2t2
+> bzoj1066 bzoj1191 bzoj3693 cf498c vijos1891  poj2396 zoj3229 codevs1222 雅礼集训day2t2
 
 
 

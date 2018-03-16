@@ -128,13 +128,45 @@ $$
 
 得证.            
 
+## 一点重要的结论
 
+$$
+n = \sum_{d \backslash n}\varphi(d)   \tag{欧拉函数的狄利克雷前缀和}
+$$
+
+证明1：利用法里级数    
+这是《具体数学》的证明方法。名字很玄乎，其实很直观。
+
+我们考察以 $$n$$ 为底的所有真分数和1一起组成的集合。不妨假设 $$n=12$$ . 则这些分数是：    
+$$
+\frac{1}{12}, \frac{2}{12}, \frac{3}{12}, \frac{4}{12}, \frac{5}{12}, \frac{6}{12}, \frac{7}{12}, \frac{8}{12}, \frac{9}{12}, \frac{10}{12}, \frac{11}{12}, \frac{12}{12}
+$$
+化简后就变成了：      
+$$
+\frac{1}{12},\frac{1}{6},\frac{1}{4},\frac{1}{3}, \frac{5}{12}, \frac{1}{2}, \frac{7}{12}, \frac{2}{3}, \frac{3}{4}, \frac{5}{6}, \frac{11}{12}, \frac{1}{1}
+$$
+按照分母分个组：    
+$$
+\left(\frac{1}{1}\right),\left(\frac{1}{2}\right), \left(\frac{1}{3}, \frac{2}{3}\right), \left(\frac{4}{1}, \frac{4}{3}\right), \left(\frac{1}{6}, \frac{5}{6}\right),\left( \frac{1}{12}, \frac{5}{12}, \frac{7}{12}, \frac{11}{12}\right)
+$$
+分母里面出现了 $$n$$ 的每个约数 $$d$$ . 对于每个约数 $$d$$ 对应的分组，分子上出现了 $$\varphi(d)$$ 个小于等于 $$d$$ 且与之互质的数。总共又有 $$n$$ 个分数。也就是说所有约数的 $$\varphi(n)$$ 之和就是 $$n$$ . 写成式子就是上式。得证。
+
+证明2：利用 $$\mu$$ 函数的性质，构造出 $$\mu(n)$$ ，再使用莫比乌斯反演消去（%Anoxiacxy）
+$$
+\begin{align*}
+\varphi(n) &= \sum_{1 \le i \le n} [i \perp n] \\
+&= \sum_{1 \le i \le n} \sum_{d  \backslash \text{gcd}(i, n)} \mu(d) \\
+&= \sum_{d \backslash n} \sum_{1 \le i \le n} \mu(d) [d \backslash i] \\
+&= \sum_{d \backslash n} \mu(d) \frac{n}{d} \\
+&\Rightarrow n = \sum_{d \backslash n} \varphi(n)
+\end{align*}
+$$
+QED.
 
 ## 例题
 
 - BZOJ2301 [HAOI2011]Problem b
-- ​
-
+- 莫比乌斯反演+数论分块，达到单组询问 $$O(\sqrt{n})$$ ​的复杂度。
 
 
 

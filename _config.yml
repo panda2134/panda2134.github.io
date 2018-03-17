@@ -1,16 +1,95 @@
-theme: jekyll-theme-cayman
-title: Panda_2134's Blog
-tag: Stay Hungry, Stay Stupid
+# Site settings
+title: Panda2134's Blog
+SEOTitle: Panda2134's Blog
+header-img: img/home-bg.jpg
+email: "ljypanda@live.com"
+description: "Panda2134's coding blog"
+keyword: "OI panda2134 coding"
+url: "https://panda2134.tk"              # your host, for absolute URL
+baseurl: ""                              # for example, '/blog' if your blog hosted on 'host/blog'
+author: "panda_2134"
+
+
+# SNS settings
+RSS: false
+github_username:    panda2134
+twitter_username:   ljypanda
+
+
+
+# Build settings
+# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
-author: panda_2134
 permalink: /:year/:month/:day/:title
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+
+# Gems
+# from PR#40, to support local preview for Jekyll 3.0
+gems: [jekyll-paginate]
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
 excerpt_separator: <!--more-->
 markdown: kramdown
 kramdown:
-  auto_ids:       true
-  entity_output:  as_char
   toc_levels:     1..6
-  smart_quotes:   lsquo,rsquo,ldquo,rdquo
-  input:          GFM
-  hard_wrap:      false
-  footnote_nr:    1
+  input: 		  GFM                            # use Github Flavored Markdown !important
+
+
+
+# Disqus settings
+# disqus_username: hux
+
+# Netease setttings
+# netease_comment: false
+
+# Gitment settings
+gitment_username: panda2134
+gitment_repo: panda2134.github.io
+gitment_client_id: 9107291a3086ed30c48f
+gitment_client_secret: aaa7ae9353eca07778c747e5641ffa81c5c24e8d
+
+# Analytics settings
+# Baidu Analytics 
+# ba_track_id: [your track id]
+
+# Google Analytics
+# ga_track_id: 'UA-00000000-1'            # Format: UA-xxxxxx-xx
+# ga_domain: panda2134.tk
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "但行好事，莫问前程。"
+sidebar-avatar: /img/avatar.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featureds
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Progressive Web Apps
+chrome-tab-theme-color: "#000000"
+service-worker: true
+
+
+
+# Friends
+friends: [
+    {
+        title: "Example",
+        href: "http://example.com/"
+    }
+]

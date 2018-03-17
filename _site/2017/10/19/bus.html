@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\(', '\)'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    },
+    "HTML-CSS": { webFont: "Neo-Euler" }
+  });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Panda2134's coding blog">
+    <meta name="keywords"  content="OI panda2134 coding">
+    <meta name="theme-color" content="#000000">
+    
+    <title>[NOIP2011]观光公交 - Panda2134's Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2017/10/19/bus">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Panda2134's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/portfolio/">Portfolio</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/home-bg.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#递推" title="递推">递推</a>
+                        
+                        <a class="tag" href="/tags/#贪心" title="贪心">贪心</a>
+                        
+                    </div>
+                    <h1>[NOIP2011]观光公交</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by Panda2134's Blog on October 19, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<p>链接：<a href="https://www.luogu.org/problem/show?pid=1315">Luogu-P1315</a></p>
+
+<p>这个题目是在某模拟赛中看到的……并没有做过，当时认为是DP，没有注意到加速器会影响等车的时间，认为只影响坐车的时间。想到了差分。考试结束之前20分钟才发现不满足无后效性，于是完挂爆0。</p>
+<h2 id="分析">分析</h2>
+
+<h3 id="why-greedy">Why Greedy?</h3>
+
+<ul>
+  <li>DP的状态难以设计，而且无法转移</li>
+  <li>是序列问题，也没有明显的元素间关系</li>
+  <li>最小化旅行的时间，是最优化问题
+最优化 <script type="math/tex">\Rightarrow</script> DP/贪心</li>
+</ul>
+
+<p>既然DP不行，就只有贪心咯
+<!--more--></p>
+<h3 id="切入问题">切入问题</h3>
+
+<script type="math/tex; mode=display">\text{旅行时间} \Rightarrow \begin{cases}
+  \text { 等待时间 } \xleftarrow{ \text{取决于} }
+ \begin{cases}
+   \text { 最后到的人的到达时间 }  \Leftarrow \text{不变}\\
+   \text { 车到达的时间 } \Leftarrow \text{受到加速器影响}
+ \end{cases} \\
+ \text { 坐车时间 }  \xleftarrow{ \text{缩短} } \text{加速器}  ⇗ \text{提早}
+\end{cases}</script>
+
+<p>从上面的分析我们可以知道，问题的关键就在于加速器。确定了加速器，坐车时间和等待时间的变化就确定了。</p>
+<h3 id="分析贪心依据">分析贪心依据</h3>
+
+<p>加速器怎么影响坐车的时间呢？ 我们可以发现，对于一次“应用加速器”的过程，如果<strong><em>不考虑最后到的人到达时间的影响</em></strong>，在加速的边右边的点下车的人时间会变优。对每个人的优化效果是相同的。</p>
+
+<p><img src="https://panda2134.github.io/img/Bus01.PNG" alt="Bus01" />
+如上图，绿色块代表连接两个点的边，点未画出。对于红色箭头代表的人，他的坐车时间缩短了；而对于蓝色箭头代表的人，他的等待时间也缩短了。</p>
+
+<p>注意，加速器的优化效果是<em>有限</em>的：如果记汽车在站台 <script type="math/tex">i</script> 停车的时间为 <script type="math/tex">Bus_i</script>， 该站最后一个到站台的人到达时间为<script type="math/tex">Last_i</script>， 从应用位置开始往右，找到的第一个满足 <script type="math/tex">Bus_i \leq Last_i</script> 的点即为优化效果的终止点。</p>
+
+<p>那么在哪里使用加速器呢？有了优化范围（应用点到终止点）和优化的策略（最大化优化人数），就可以贪心了：首先预处理出每个站点下车的人数以及前缀和，以及不用加速器时到每个站的时间（递推），然后比较每个点，找出优化人数即可。</p>
+
+<p>可能会想到一种错误的贪心，即对于每个极大的优化范围（两侧都是终止点）只用区间最左点更新最值。似乎是正确的，但是没有考虑边权非负的限制！
+对于有多个点取得最大优化人数的情况，任选一个装加速器即可。</p>
+
+<h2 id="代码">代码</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAXN</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">MAXM</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">Ans</span><span class="p">,</span> <span class="n">D</span><span class="p">[</span><span class="n">MAXN</span><span class="o">+</span><span class="mi">10</span><span class="p">],</span> <span class="n">T</span><span class="p">[</span><span class="n">MAXM</span><span class="o">+</span><span class="mi">10</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">MAXM</span><span class="o">+</span><span class="mi">10</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="n">MAXM</span><span class="o">+</span><span class="mi">10</span><span class="p">],</span>
+<span class="n">Sum</span><span class="p">[</span><span class="n">MAXN</span><span class="o">+</span><span class="mi">10</span><span class="p">],</span> <span class="n">Last</span><span class="p">[</span><span class="n">MAXN</span><span class="o">+</span><span class="mi">10</span><span class="p">],</span> <span class="n">Bus</span><span class="p">[</span><span class="n">MAXN</span><span class="o">+</span><span class="mi">10</span><span class="p">],</span> <span class="n">Div</span><span class="p">[</span><span class="n">MAXN</span><span class="o">+</span><span class="mi">10</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">PrepBus</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+		<span class="n">Bus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">Bus</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">Last</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Init</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">,</span><span class="o">&amp;</span><span class="n">M</span><span class="p">,</span><span class="o">&amp;</span><span class="n">K</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">M</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="o">&amp;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="o">&amp;</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">M</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">Sum</span><span class="p">[</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">++</span><span class="p">;</span> <span class="n">Last</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">Last</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+		<span class="n">Sum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+=</span><span class="n">Sum</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+	<span class="n">PrepBus</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Work</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">Div</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span> <span class="n">Div</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> 
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">p</span><span class="o">&lt;=</span><span class="n">K</span><span class="p">;</span><span class="n">p</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//当前要用掉第i个加速器 
+</span>		<span class="kt">int</span> <span class="n">maxp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxv</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">Bus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Last</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="n">Div</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+			<span class="k">else</span> <span class="n">Div</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Div</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+		<span class="p">}</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="c1">//左侧放加速器
+</span>			<span class="k">if</span><span class="p">(</span><span class="n">Sum</span><span class="p">[</span><span class="n">Div</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">-</span> <span class="n">Sum</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">maxv</span> <span class="o">&amp;&amp;</span> <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">//注意读题：边权非负，则要装加速器的边的权值为正 
+</span>				<span class="n">maxv</span><span class="o">=</span><span class="n">Sum</span><span class="p">[</span><span class="n">Div</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">-</span> <span class="n">Sum</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">maxp</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+		<span class="n">D</span><span class="p">[</span><span class="n">maxp</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+		<span class="n">PrepBus</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">M</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">Ans</span><span class="o">+=</span><span class="n">Bus</span><span class="p">[</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">-</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="n">Ans</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span> <span class="n">Init</span><span class="p">();</span> <span class="n">Work</span><span class="p">();</span> <span class="p">}</span>
+</code></pre></div></div>
+
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/08/20/cook" data-toggle="tooltip" data-placement="top" title="烹调方案">
+                        Previous<br>
+                        <span>烹调方案</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/11/04/number_theory" data-toggle="tooltip" data-placement="top" title="数论基础">
+                        Next<br>
+                        <span>数论基础</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                    
+
+                    
+
+                    
+                    <!-- gitment 评论框+js start -->
+                    <div id="gitment-comment" class="comment"></div>
+                    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                    <script>
+                        var gitment = new Gitment({
+                         id: '/2017/10/19/bus',
+                         owner: 'panda2134',
+                         repo: 'panda2134.github.io',
+                         oauth: {
+                           client_id: '9107291a3086ed30c48f',
+                           client_secret: 'aaa7ae9353eca07778c747e5641ffa81c5c24e8d',
+                         },
+                        });
+                        gitment.render('gitment-comment');
+                    </script>
+                    <!-- gitment 评论框+js end -->
+                    
+                    <noscript>Please enable JavaScript to view the comments.</noscript>
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+        				
+                            
+                				<a href="/tags/#并查集" title="并查集" rel="2">
+                                    并查集
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#生成树" title="生成树" rel="2">
+                                    生成树
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#单调栈" title="单调栈" rel="3">
+                                    单调栈
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#动态规划" title="动态规划" rel="14">
+                                    动态规划
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#LIS" title="LIS" rel="3">
+                                    LIS
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#LCS" title="LCS" rel="2">
+                                    LCS
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#序列型DP" title="序列型DP" rel="5">
+                                    序列型DP
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#二维平面DP" title="二维平面DP" rel="3">
+                                    二维平面DP
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#数学" title="数学" rel="3">
+                                    数学
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#背包" title="背包" rel="2">
+                                    背包
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#递推" title="递推" rel="2">
+                                    递推
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#悬线法" title="悬线法" rel="2">
+                                    悬线法
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#排序" title="排序" rel="2">
+                                    排序
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#贪心" title="贪心" rel="5">
+                                    贪心
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#数论" title="数论" rel="2">
+                                    数论
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#最短路" title="最短路" rel="4">
+                                    最短路
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#图论" title="图论" rel="7">
+                                    图论
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#构造" title="构造" rel="2">
+                                    构造
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#二分图" title="二分图" rel="2">
+                                    二分图
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#网络流" title="网络流" rel="5">
+                                    网络流
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#最小割" title="最小割" rel="3">
+                                    最小割
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#期望" title="期望" rel="2">
+                                    期望
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://example.com/">Example</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/ljypanda">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/panda2134">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Panda2134's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

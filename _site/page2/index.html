@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\(', '\)'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    },
+    "HTML-CSS": { webFont: "Neo-Euler" }
+  });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Panda2134's coding blog">
+    <meta name="keywords"  content="OI panda2134 coding">
+    <meta name="theme-color" content="#000000">
+    
+    <title>Panda2134's Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/page2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Panda2134's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/portfolio/">Portfolio</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Panda2134's Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">Home Page</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- PostList Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                postlist-container
+            ">
+    			
+<div class="post-preview">
+    <a href="/2018/02/26/NetworkFlow">
+        <h2 class="post-title">
+            网络流常见建模总结
+        </h2>
+        
+        <div class="post-content-preview">
+            自己对最近网络流学习的一些整理和理解……    
+
+如果有什么错误，请立即纠正，非常感谢。
+
+这边Blog的排版估计很渣……我懒得管了，丢个 $$\LaTeX$$ 版的吧……[戳我](../downloads/2018-02-26-NetworkFlow.pdf)
+
+**UPD:**发现洛谷上面的网络流题目严重不全……这么多年省选也不会只考了10道网络流啊……翻了翻hzwer的博客，屯了40...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on February 26, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/02/23/poly">
+        <h2 class="post-title">
+            基础多项式算法
+        </h2>
+        
+        <div class="post-content-preview">
+            慢慢填吧，毕竟除了FFT之外HBOI都没考过，先学好数据结构，图论和DP。
+
+
+
+约定：设 $$\deg(A(x))$$ 为多项式 $$A(x)$$ 的次数。
+
+$$\newcommand{md}{\text{mod }}$$
+
+## FFT 和 NTT
+
+略。
+
+## 多项式求逆
+
+用数学归纳法的思路。
+
+在 $$ \text{mod } x $$ 的意义下， $$A(x)$$ 的逆多项式...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on February 23, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/02/19/nodes">
+        <h2 class="post-title">
+            [NOI2016] 旷野大计算
+        </h2>
+        
+        <div class="post-content-preview">
+            [UOJ-224][1]
+
+神题。  
+
+扑通一声跪下来，千古神犇vfk。  
+
+---------------------
+
+早就听说了这个造计算机题。正好，前几天上洛谷的省选课，这个题目作为提答作业布置了下来。于是我就开始了我的愉快作死之旅啦~  
+
+自己xjb乱搞，搞了56pts，发现不会做了XD  
+
+于是参考了[chrt的题解][2]和[vfleaking的slide][3]，各种...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on February 19, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/02/12/HBOI2018Plan">
+        <h2 class="post-title">
+            省选计划
+        </h2>
+        
+        <div class="post-content-preview">
+            ## 省选计划
+
+省选知识点如下，希望大家能监督我QAQ
+
+如果发现这边很久都没有打勾的话就在QQ上面喷我吧
+
+以及如果看到我水群就让我回去学OI
+
+希望能在省选之前把 $$3/4$$ 的勾打上吧……
+
+### 暴力 - 3 days
+
+- [ ] 模拟退火
+- [ ] 爬山
+- [ ] DLX
+
+### 动态规划 - 12.5 days
+
+- [ ] LCIS - 2h
+- [ ] 树上D...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on February 12, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/01/22/transform">
+        <h2 class="post-title">
+            [NOI2009]变换序列
+        </h2>
+        
+        <div class="post-content-preview">
+            链接：[Luogu-P1963][1]
+
+## 思路
+这个题目可以看出你真正理解了匈牙利算法没有。
+
+首先我们可以建立二分图的模型：每个位置可以有2种取值，于是我们把位置作为左边的点，取值作为右边的点。然后进行二分图匹配，只要有完美匹配，完美匹配就是一个可行解。
+
+
+
+再考虑题面中最优性的要求。对于字典序问题，我们常常按照字典序枚举。于是这里也可以枚举：从上往下枚举左边的点，按照字典序枚举和...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on January 22, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/01/20/NOIP2017">
+        <h2 class="post-title">
+            NOIP2017游记
+        </h2>
+        
+        <div class="post-content-preview">
+            考完NOIP已经2个月了，也是时候写个游记了。
+
+
+
+## 考前
+
+还是得从NOIP2016讲起。去年NOIP，我啥都不会，然后原地爆炸，赛场上调试3个小时线段树导致day2差点爆零。由于去年NOIP炸飞的缘故，在NOIP2017之前我基本没学什么超出“暴力、DP、图论基础”之外的算法，只是想把基础的东西学好。确切地说，去年NOIP之后很长一段时间我都几乎失去了OI的信心，大致说来，整个高一...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on January 20, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/01/18/MagicForest">
+        <h2 class="post-title">
+            [NOI2014]魔法森林
+        </h2>
+        
+        <div class="post-content-preview">
+            链接：[Luogu-P2387][1]
+
+这是我做的第一道非模板LCT题目……自己并没有想出来，看题解也看了好久，于是总结下做这个题目的思路。
+
+## 题意	
+
+给出一个$$n$$个点，$$m$$条边的无向图，每条边都有权值$$a_i,b_i$$，求一条从点$$1$$到点$$n$$的路径，使得这条路径上边的$$a_i,b_i$$最大值之和最小。$$2 \leq n \leq 5 \times...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on January 18, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/01/16/MosAlgorithm">
+        <h2 class="post-title">
+            莫队笔记
+        </h2>
+        
+        <div class="post-content-preview">
+            莫队是一种**离线**解决区间查询问题的算法。
+
+记得 NOIP 之前那段时间，见到一道查询区间颜色种类数目的题目，标签是树状数组。想了很久也没有想出来怎么用树状数组做，看题解才知道有莫队这种逆天的东西……srOOrz
+
+## 普通莫队
+
+以查询区间颜色种类数目为例。为了方便，假定元素个数为 $$n$$ ，查询数目为 $$q$$ .
+
+暴力开桶扫一遍，复杂度是 $$O(qn)$$ 的。有没有...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on January 16, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/01/12/drink">
+        <h2 class="post-title">
+            雅礼集训day12-drink
+        </h2>
+        
+        <div class="post-content-preview">
+            ## 题面
+
+小C桌上有$$n(n \leq 10^6)$$杯水排成一行,第$$i$$杯水中有$$a_i$$单位体积的水. 他会选择一个区间$$[l, r]$$,
+并拿一个初始为空的杯子(杯子的容积无限大),他可以重复无限次以下操作:
+• 选定任意一杯水$$i$$, $$i \in [l, r]$$.
+• 使i和它拿着的杯子里的水的体积变为它们的平均值.
+小C希望进行若干操作后最大化杯子里的...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on January 12, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/01/02/WCTodo">
+        <h2 class="post-title">
+            WC2018学习计划
+        </h2>
+        
+        <div class="post-content-preview">
+            离WC2018只有一个月了……
+
+雅礼集训：
+ - 点/链分治
+ - Mobius反演
+ - Prufer序列   （做题）
+ - FFT DFT FWT 多项式各种操作
+ - 网络流和各种建模
+ - 博弈DP
+     
+ - Link-Cut Tree
+ - 线段树（做题）
+     - 一般情况的区间修改
+ - 主席树
+ - ~~划分树~~(暂时不学这个冷门数据结构)
+ - fhq-t...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Panda2134's Blog on January 2, 2018
+    </p>
+</div>
+<hr>
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    <li class="previous">
+        <a href="/">&larr; Newer Posts</a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/page3">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                                <a href="/tags/#并查集" title="并查集" rel="2">
+                                    并查集
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#生成树" title="生成树" rel="2">
+                                    生成树
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#单调栈" title="单调栈" rel="3">
+                                    单调栈
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#动态规划" title="动态规划" rel="14">
+                                    动态规划
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#LIS" title="LIS" rel="3">
+                                    LIS
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#LCS" title="LCS" rel="2">
+                                    LCS
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#序列型DP" title="序列型DP" rel="5">
+                                    序列型DP
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#二维平面DP" title="二维平面DP" rel="3">
+                                    二维平面DP
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#数学" title="数学" rel="3">
+                                    数学
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#背包" title="背包" rel="2">
+                                    背包
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#递推" title="递推" rel="2">
+                                    递推
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#悬线法" title="悬线法" rel="2">
+                                    悬线法
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#排序" title="排序" rel="2">
+                                    排序
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#贪心" title="贪心" rel="5">
+                                    贪心
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#数论" title="数论" rel="2">
+                                    数论
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#最短路" title="最短路" rel="4">
+                                    最短路
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#图论" title="图论" rel="7">
+                                    图论
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#构造" title="构造" rel="2">
+                                    构造
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#二分图" title="二分图" rel="2">
+                                    二分图
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#网络流" title="网络流" rel="5">
+                                    网络流
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#最小割" title="最小割" rel="3">
+                                    最小割
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#期望" title="期望" rel="2">
+                                    期望
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <img src="/img/avatar.png" />
+                        
+                        
+                            <p>但行好事，莫问前程。</p>
+                        
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            <li>
+                                <a href="https://twitter.com/ljypanda">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://github.com/panda2134">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://example.com/">Example</a></li>
+                    
+                </ul>
+                
+    		</div>
+        
+	</div>
+</div>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/ljypanda">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/panda2134">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Panda2134's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

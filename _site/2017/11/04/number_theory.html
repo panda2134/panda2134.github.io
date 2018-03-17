@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\(', '\)'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    },
+    "HTML-CSS": { webFont: "Neo-Euler" }
+  });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Panda2134's coding blog">
+    <meta name="keywords"  content="OI panda2134 coding">
+    <meta name="theme-color" content="#000000">
+    
+    <title>数论基础 - Panda2134's Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2017/11/04/number_theory">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Panda2134's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/portfolio/">Portfolio</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/home-bg.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#数论" title="数论">数论</a>
+                        
+                    </div>
+                    <h1>数论基础</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by Panda2134's Blog on November 4, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<p>填坑ing…</p>
+
+<h2 id="概述">概述</h2>
+<p>数论是研究整数的学问。初等数论的基础主要包括同余，扩展欧几里得定理，费马小定理，欧拉定理等。
+<!--more--></p>
+<h2 id="同余">同余</h2>
+<h3 id="基本性质">基本性质</h3>
+<p>同加
+\[ \large a \equiv b \pmod m \Leftrightarrow a+c \equiv b+c\pmod m \]</p>
+
+<p>同减
+\[ \large a \equiv b\pmod m \Leftrightarrow a-c \equiv b-c \pmod m \]
+同乘
+\[ \large a \equiv b\pmod m \Leftrightarrow  a \cdot c \equiv b \cdot c \pmod m \]</p>
+
+<p>同乘逆元
+\[ \large a \equiv b \pmod m \Leftrightarrow a \cdot c^{-1} \equiv b \cdot c^{-1} \pmod m \]</p>
+<h3 id="扩展欧几里得定理">扩展欧几里得定理</h3>
+<h4 id="作用">作用</h4>
+<p>求解如下的丢番图方程之整解：
+\[ax+by=c\]</p>
+<h4 id="裴蜀定理">裴蜀定理</h4>
+<p>上述方程有整数解，当且仅当<script type="math/tex">(a,b)|c</script>。   <br />
+原因很显然：既然 <script type="math/tex">ax+by=(a,b)</script> 恒定有解，上述方程要有解，就得是两边同时乘上一个整数。</p>
+
+<p>有了上述定理，对任意方程 <script type="math/tex">ax+by=c</script> 的求解，就转为了对于 <script type="math/tex">ax+by=(a,b)</script> 的求解。   <br />
+如何对 <script type="math/tex">ax+by=(a,b)</script> 求解呢?</p>
+<h4 id="扩展欧几里得定理-1">扩展欧几里得定理</h4>
+<p>\[\large ax+by=(a,b) \Rightarrow bx’+(a \text{ mod } b)y’=(b,a \text{ mod } b)\]
+由欧几里得定理：
+\[\large (a,b)=(b,a \text{ mod } b)\]
+于是
+\[\large ax+by = bx’+(a \text{ mod } b) \cdot y’=bx’+(a-\lfloor \frac{a}{b} \rfloor \cdot b) \cdot y’\]
+即
+\[\large ax+by=ay’+b\cdot(x’-\lfloor \frac{a}{b} \rfloor \cdot y’)\]
+显然有</p>
+
+<script type="math/tex; mode=display">\large 
+\begin{cases} 
+x=y'\\ 
+y=x'-\lfloor \frac{a}{b} \rfloor \cdot y' 
+\end{cases}</script>
+
+<p>于是扩展欧几里得定理得证。</p>
+<h4 id="多解">多解</h4>
+<p>如果上述方程有解，则有<strong>无穷组</strong>解。初始解 <script type="math/tex">(x_0,y_0)</script> 保证 <script type="math/tex">|x_0|+|y_0|</script> 最小。
+而且有：
+<script type="math/tex">\large 
+\begin{cases} 
+x=x\_0-t \cdot \frac{b}{(a,b)}\\
+y \,=y\_0+t \cdot \frac{a}{(a,b)} 
+\end{cases}</script>
+其中<script type="math/tex">t \in \mathbb{Z}</script>。</p>
+<h4 id="解同余方程">解同余方程</h4>
+<p><em>To Be Done</em></p>
+<h4 id="代码">代码</h4>
+<p>注意，即使a和b属于int，x和y也可能爆int!</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">exgcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="n">d</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+	<span class="k">else</span> <span class="p">{</span>
+		<span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span> <span class="n">y</span><span class="o">-=</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="例题">例题</h4>
+<p><a href="https://www.luogu.org/problemnew/show/P1516">洛谷P1516-青蛙的约会</a>
+<em>To Be Done</em></p>
+<h3 id="逆元">逆元</h3>
+<p>由同余定义显然有：
+\[\large ax \equiv c \; \pmod b \Leftrightarrow ax+by=c \]
+于是
+\[\large a \cdot a^{-1} \equiv 1 \pmod b\Leftrightarrow a \cdot a^{-1} +by=1 \]
+有解的充要条件是
+\[\large (a,b)|c\]
+而<script type="math/tex">c=1</script>，于是
+\[\large (a,b)=1\]   <br />
+综上，<script type="math/tex">a</script> 存在模 <script type="math/tex">b</script> 意义下的乘法逆元的充要条件是<script type="math/tex">(a,b)=1</script>，即 <script type="math/tex">a,b</script> 互质。
+当逆元存在时，显然可以由扩展欧几里得定理得出一组解。注意通过上面提到的多解的判断把 <script type="math/tex">x</script> <strong>变为尽可能小的正数</strong>。这样求出的一定是最小的逆元。</p>
+<h4 id="应用费马小定理">应用费马小定理</h4>
+<p>显然，由于<script type="math/tex">a^{p-1} \equiv 1 \pmod p</script>，可知<script type="math/tex">a \cdot a^{p-2} \equiv 1 \pmod p</script>。于是<script type="math/tex">a^{p-2}</script>就是<script type="math/tex">a</script>在模<script type="math/tex">p</script>意义下的一个逆元。要求<script type="math/tex">p \in \mathbb{P}</script>且<script type="math/tex">p \nmid a</script>。用快速幂求出即可。</p>
+<h4 id="应用欧拉定理">应用欧拉定理</h4>
+<p>同上。求<script type="math/tex">a^{\varphi(m)-1}</script>即可。</p>
+
+<h2 id="费马小定理">费马小定理</h2>
+<p>\[\large \forall a \in \mathbb{Z}, p \in \mathbb{P},p \nmid a,\;\;a^{p-1} \equiv 1 \pmod p\]
+<strong>证明:</strong>
+\[\large \binom{p}{m}=\frac{p!}{m!(p-m)!}\]
+当<script type="math/tex">p \in \mathbb{P}, m \neq 1且m \neq p</script>时，分子的<script type="math/tex">p</script>不可能被分母约去。
+ 因此<script type="math/tex">p | \tbinom{p}{m}</script>。         <br />
+ 又由二项式定理：    <br />
+ <img src="https://panda2134.github.io/img/Fermat.png" alt="" />
+令<script type="math/tex">a=b-1</script>，则
+\[a^p \equiv a \pmod p\]
+即
+\[a^{p-1} \equiv 1 \pmod p\]
+得证。</p>
+<h3 id="例题-1">例题</h3>
+<p><em>To Be Done</em></p>
+
+<h3 id="底和顶">底和顶</h3>
+
+<p>定义:
+<script type="math/tex">% <![CDATA[
+n = \lfloor x \rfloor \Leftrightarrow n \le x < n+1 \\
+n = \lceil x \rceil \Leftrightarrow n-1 < x \le n %]]></script>
+常用不等式:
+<script type="math/tex">% <![CDATA[
+x < n \Leftrightarrow \lfloor x \rfloor < n \\
+n < x \Leftrightarrow n < \lceil x \rceil \\
+x \le n \Leftrightarrow \lceil x  \rceil \le n \\
+n \le x \Leftrightarrow n \le \lfloor x \rfloor %]]></script>
+常记为”左实底,右实顶,若取等,则相反”.</p>
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/10/19/bus" data-toggle="tooltip" data-placement="top" title="[NOIP2011]观光公交">
+                        Previous<br>
+                        <span>[NOIP2011]观光公交</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/11/05/irreversible-reboot" data-toggle="tooltip" data-placement="top" title="浴谷八连测-R6-A - 不可逆的重启动">
+                        Next<br>
+                        <span>浴谷八连测-R6-A - 不可逆的重启动</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                    
+
+                    
+
+                    
+                    <!-- gitment 评论框+js start -->
+                    <div id="gitment-comment" class="comment"></div>
+                    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                    <script>
+                        var gitment = new Gitment({
+                         id: '/2017/11/04/number_theory',
+                         owner: 'panda2134',
+                         repo: 'panda2134.github.io',
+                         oauth: {
+                           client_id: '9107291a3086ed30c48f',
+                           client_secret: 'aaa7ae9353eca07778c747e5641ffa81c5c24e8d',
+                         },
+                        });
+                        gitment.render('gitment-comment');
+                    </script>
+                    <!-- gitment 评论框+js end -->
+                    
+                    <noscript>Please enable JavaScript to view the comments.</noscript>
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+        				
+                            
+                				<a href="/tags/#并查集" title="并查集" rel="2">
+                                    并查集
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#生成树" title="生成树" rel="2">
+                                    生成树
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#单调栈" title="单调栈" rel="3">
+                                    单调栈
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#动态规划" title="动态规划" rel="14">
+                                    动态规划
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#LIS" title="LIS" rel="3">
+                                    LIS
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#LCS" title="LCS" rel="2">
+                                    LCS
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#序列型DP" title="序列型DP" rel="5">
+                                    序列型DP
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#二维平面DP" title="二维平面DP" rel="3">
+                                    二维平面DP
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#数学" title="数学" rel="3">
+                                    数学
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#背包" title="背包" rel="2">
+                                    背包
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#递推" title="递推" rel="2">
+                                    递推
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#悬线法" title="悬线法" rel="2">
+                                    悬线法
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#排序" title="排序" rel="2">
+                                    排序
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#贪心" title="贪心" rel="5">
+                                    贪心
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#数论" title="数论" rel="2">
+                                    数论
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#最短路" title="最短路" rel="4">
+                                    最短路
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#图论" title="图论" rel="7">
+                                    图论
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#构造" title="构造" rel="2">
+                                    构造
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#二分图" title="二分图" rel="2">
+                                    二分图
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#网络流" title="网络流" rel="5">
+                                    网络流
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#最小割" title="最小割" rel="3">
+                                    最小割
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#期望" title="期望" rel="2">
+                                    期望
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://example.com/">Example</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/ljypanda">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/panda2134">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Panda2134's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

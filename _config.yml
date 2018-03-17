@@ -89,7 +89,27 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "Example",
-        href: "http://example.com/"
-    }
+        title: "chrt",
+        href: "https://chrt.github.io"
+    },
+	{
+		title: "Edgration",
+		href: "https://edgration.com"
+	},
+	{
+		title: "KSKun",
+		href: "https://ksmeow.moe"
+	},
+	{
+		title: "Anoxiacxy",
+		href: "https://anoxiacxy.github.io"
+	},
+	{
+		title: "zjp_shadow",
+		href: "http://cnblogs.com/zjp-shadow"
+	},
+	{
+		title: "nonamenotitle",
+		href: "http://nonamenotitle.pub"
+	}
 ]

@@ -3,6 +3,7 @@ layout: post
 comments: true
 title: "莫比乌斯反演学习笔记"
 categories: "笔记"
+catalog: true
 tags: ["数论","莫比乌斯反演"]
 ---
 
@@ -10,7 +11,7 @@ tags: ["数论","莫比乌斯反演"]
 ## 莫比乌斯函数
 
 我们定义    
-​              
+                
 $$
 \begin{equation}
 \mu(n) = \begin{cases}
@@ -22,17 +23,17 @@ $$
 $$
 
 为什么这么定义?为了满足性质:      
-​                 
+                 
 $$
 \begin{equation} \sum_{d \backslash n} \mu (d) = [n = 1] \end{equation}
 $$
 
 下面我们来证明上式.     
-​           
+           
 当 $n = 1$ 时显然成立.      
-​             
+             
 当 $n \ge 2$ 时,不妨设 $n = \prod_{i=1}^k p_i^{\alpha_i}$.  $n$ 的恰含有 $r$ 个互异质因数的因子有$\binom{k}{r}$ 个.当它含有奇数个互异质因子时, 对答案贡献为 $-1$ , 含偶数个互异质因子时贡献为 $1$ .于是总的贡献为:           
-​              
+              
 $$
 \begin{align*}
 \sum_{d \backslash n} \mu (d) &= \binom{n}{0} - \binom{n}{1} + \binom{n}{2}- \cdots \\
@@ -57,9 +58,9 @@ F(n) = \sum_{d \backslash n} f(d) \Leftrightarrow f(n) = \sum_{d \backslash n} \
 $$
 
 证明:       
-​                  
+                  
 ⇒:        
-​            
+            
 $$
 \begin{align*}
 	\sum_{d \backslash n} \mu(d) F(\frac{n}{d})	&= \sum_{d \backslash n} \mu(d) \sum_{k \backslash (n/d)} f(k) \\
@@ -72,7 +73,7 @@ $$
 $$
 
 ⇐:    
-​           
+           
 $$
 \begin{align*}
 	\sum_{d \backslash n} f(d) &= \sum_{d \backslash n} \sum_{k \backslash d} \mu(k) F(\frac{d}{k}) \\
@@ -85,23 +86,23 @@ $$
 $$
 
 得证.          
-​           
+           
 ### 形式2:枚举倍数
 
 这个形式比较常用.           
-​              
+              
 我们不妨假设 $n, d \le N$ . 则:  
-​              
+              
 $$
 F(n) = \sum_{n \backslash d}f(d) \Leftrightarrow f(n) = \sum_{n \backslash d} \mu(\frac{d}{n})F(d)
 $$
 
 这个比较难证明……想了好久……            
-​             
+             
 证明:            
-​                  
+                  
 ⇒:                        
-​                
+                
 $$
 \begin{align*}
 \sum_{n \backslash d} \mu(\frac{d}{n}) F(d) &= \sum_{k=1}^{+\infty}  \mu(k) F(nk) \\
@@ -113,7 +114,7 @@ $$
 $$
 
 ⇐:            
-​                   
+                   
 $$
 \begin{align*}
 	\sum_{n \backslash d} f(d)  &= \sum_{k=1}^{+\infty}f(nk) \\
@@ -138,20 +139,27 @@ $$
 这是《具体数学》的证明方法。名字很玄乎，其实很直观。
 
 我们考察以 $n$ 为底的所有真分数和1一起组成的集合。不妨假设 $n=12$ . 则这些分数是：    
+
 $$
 \frac{1}{12}, \frac{2}{12}, \frac{3}{12}, \frac{4}{12}, \frac{5}{12}, \frac{6}{12}, \frac{7}{12}, \frac{8}{12}, \frac{9}{12}, \frac{10}{12}, \frac{11}{12}, \frac{12}{12}
 $$
+
 化简后就变成了：      
+
 $$
 \frac{1}{12},\frac{1}{6},\frac{1}{4},\frac{1}{3}, \frac{5}{12}, \frac{1}{2}, \frac{7}{12}, \frac{2}{3}, \frac{3}{4}, \frac{5}{6}, \frac{11}{12}, \frac{1}{1}
 $$
+
 按照分母分个组：    
+
 $$
 \left(\frac{1}{1}\right),\left(\frac{1}{2}\right), \left(\frac{1}{3}, \frac{2}{3}\right), \left(\frac{4}{1}, \frac{4}{3}\right), \left(\frac{1}{6}, \frac{5}{6}\right),\left( \frac{1}{12}, \frac{5}{12}, \frac{7}{12}, \frac{11}{12}\right)
 $$
+
 分母里面出现了 $n$ 的每个约数 $d$ . 对于每个约数 $d$ 对应的分组，分子上出现了 $\varphi(d)$ 个小于等于 $d$ 且与之互质的数。总共又有 $n$ 个分数。也就是说所有约数的 $\varphi(n)$ 之和就是 $n$ . 写成式子就是上式。得证。
 
 证明2：利用 $\mu$ 函数的性质，构造出 $\mu(n)$ ，再使用莫比乌斯反演消去（%Anoxiacxy）
+
 $$
 \begin{align*}
 \varphi(n) &= \sum_{1 \le i \le n} [i \perp n] \\
@@ -161,6 +169,7 @@ $$
 &\Rightarrow n = \sum_{d \backslash n} \varphi(n)
 \end{align*}
 $$
+
 QED.
 
 ## 例题

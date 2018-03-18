@@ -5,8 +5,8 @@ header-img: img/home-bg.jpg
 email: "ljypanda@live.com"
 description: "Panda2134's coding blog"
 keyword: "OI panda2134 coding"
-url: "https://panda2134.github.io"              # your host, for absolute URL
-baseurl: ""                              # for example, '/blog' if your blog hosted on 'host/blog'
+# url: "https://panda2134.github.io"              # your host, for absolute URL
+# baseurl: ""                              # for example, '/blog' if your blog hosted on 'host/blog'
 author: "panda_2134"
 
 

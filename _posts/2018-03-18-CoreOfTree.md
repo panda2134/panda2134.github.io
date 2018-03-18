@@ -1,9 +1,15 @@
----
-layout: post
+--- 
+categories: 解题报告
 comments: true
+layout: post
+tags: 
+  - 图论
+  - 树
+  - 树的直径
+  - 数据结构
+  - 单调队列
+  - two-pointers
 title: "[NOIP2007]树网的核"
-categories: "解题报告"
-tags: "图论", "树", "树的直径", "数据结构", "单调队列", "two-pointers"
 ---
 
 [BZOJ-1999](http://www.lydsy.com/JudgeOnline/problem.php?id=1999)    

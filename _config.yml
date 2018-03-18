@@ -82,6 +82,7 @@ valine_verify: true
 # ga_track_id: 'UA-00000000-1'            # Format: UA-xxxxxx-xx
 # ga_domain: panda2134.github.io
 
+cnzz_track_id: 1273158321
 
 
 # Sidebar settings

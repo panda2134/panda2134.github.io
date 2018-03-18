@@ -52,10 +52,15 @@ kramdown:
 # netease_comment: false
 
 # Gitment settings
-gitment_username: panda2134
-gitment_repo: panda2134.github.io
-gitment_client_id: 9107291a3086ed30c48f
-gitment_client_secret: aaa7ae9353eca07778c747e5641ffa81c5c24e8d
+# disabled
+# gitment_username: panda2134
+# gitment_repo: panda2134.github.io
+# gitment_client_id: 9107291a3086ed30c48f
+# gitment_client_secret: aaa7ae9353eca07778c747e5641ffa81c5c24e8d
+
+# Valine settings
+valine_app_id: uNIHHlOyjHdeEuTxwk06ggwx-gzGzoHsz
+valine_app_key: QrVsjVtv5qeiy6UiGjOzdBPF
 
 # Analytics settings
 # Baidu Analytics 

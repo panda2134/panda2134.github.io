@@ -155,6 +155,24 @@ layout: default
                     </script>
                     <!-- gitment 评论框+js end -->
                     {% endif %}
+                    <!-- Valine 评论框+js start-->
+				    {% if site.valine_app_id %}
+				    <div class="comment"></div>
+				    <!--Leancloud 操作库:-->
+				    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+				    <!--Valine 的核心代码库:-->
+				    <script src="./dist/Valine.min.js"></script>
+				    <script>
+				        new Valine({
+				            av: AV, 
+				            el: '.comment', // 
+				            app_id: '{{ site.valine_app_id }}', 
+				            app_key: '{{ site.valine_app_key }}', 
+				            placeholder: ''
+				        });
+				    </script>
+				    {% endif %}
+				    <!-- Valine 评论框+js end-->
                     <noscript>Please enable JavaScript to view the comments.</noscript>
                 {% else %}
                     <h5 class="subheading">Comments are not enabled on this thread.</h3>

@@ -75,7 +75,9 @@
             el: '.comment', // 
             app_id: '{{ site.valine_app_id }}', 
             app_key: '{{ site.valine_app_key }}', 
-            placeholder: ''
+            placeholder: '',
+            notify: {{ site.valine_notify }}, 
+            verify: {{ site.valine_verify }}
         });
     </script>
     {% endif %}

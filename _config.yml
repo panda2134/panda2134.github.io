@@ -61,6 +61,8 @@ kramdown:
 # Valine settings
 valine_app_id: uNIHHlOyjHdeEuTxwk06ggwx-gzGzoHsz
 valine_app_key: QrVsjVtv5qeiy6UiGjOzdBPF
+valine_notify: true
+valine_verify: true
 
 # Analytics settings
 # Baidu Analytics 

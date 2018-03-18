@@ -58,7 +58,7 @@ $n \leq 300000$.
 
 ## 一点吐槽
 1. 一定要记住，两次BFS找出直径，对于带有**任意非负权值**的树**都成立**……今年的冬令营第一题的44分送分里面就用了这个。我以为这个只对于无权的树成立，然后不知道怎么办。忽然想起来前几天看的点分治，然而根本没写过，当场yy怎么写……然后T2的送50分就没调出来……出考场之后，cxy神犇跟我说，我才发现……囧rz
-2. 第一次看到这个加强版是在chrt的某个NOIP模拟赛里面……这个题目其实就是\[SDOI2011\]消防……那场模拟赛第一题是\[SDOI2010\]地精部落……emmmmmm，难度略高于某些年份的NOIP  <img src="https://panda2134.tk/img/emotion/huaji.png" height=30 width=30></img>。
+2. 第一次看到这个加强版是在chrt的某个NOIP模拟赛里面……这个题目其实就是\[SDOI2011\]消防……那场模拟赛第一题是\[SDOI2010\]地精部落……emmmmmm，难度略高于某些年份的NOIP <img src="https://panda2134.tk/img/emotion/huaji.png" height=30 width=30></img>。
 
 ## 代码
 ```cpp

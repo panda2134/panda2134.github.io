@@ -41,6 +41,7 @@ kramdown:
   toc_levels:     1..6
   input: 		  GFM                            # use Github Flavored Markdown !important
   markdown: kramdown
+  entity_output:  as_char
   syntax_highlighter: rouge
   # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
   # span, block element options fall back to global
@@ -108,24 +109,24 @@ friends: [
         title: "chrt",
         href: "https://chrt.github.io"
     },
-	{
-		title: "Edgration",
-		href: "https://edgration.com"
-	},
-	{
-		title: "KSKun",
-		href: "https://ksmeow.moe"
-	},
-	{
-		title: "Anoxiacxy",
-		href: "https://anoxiacxy.github.io"
-	},
-	{
-		title: "zjp_shadow",
-		href: "http://cnblogs.com/zjp-shadow"
-	},
-	{
-		title: "nonamenotitle",
-		href: "http://nonamenotitle.pub"
-	}
+    {
+      title: "Edgration",
+      href: "https://edgration.com"
+    },
+    {
+      title: "KSKun",
+      href: "https://ksmeow.moe"
+    },
+    {
+      title: "Anoxiacxy",
+      href: "https://anoxiacxy.github.io"
+    },
+    {
+      title: "zjp_shadow",
+      href: "http://cnblogs.com/zjp-shadow"
+    },
+    {
+      title: "nonamenotitle",
+      href: "http://nonamenotitle.pub"
+    }
 ]

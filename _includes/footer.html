@@ -91,7 +91,7 @@
                     <br>
                     Proudly hosted on <a href="https://pages.github.com/">GitHub Pages</a> | 
                     {% if site.cnzz_track_id %}
-					<span id='cnzz_stat_icon_{{cnzz_track_id}}'></span>
+					<span id='cnzz_stat_icon_{{site.cnzz_track_id}}'></span>
 					{% endif %}
                 </p>
             </div>
@@ -208,7 +208,7 @@
 
 <!-- cnzz -->
 {% if site.cnzz_track_id %}
-<script src='https://s22.cnzz.com/z_stat.php?id={{cnzz_track_id}}&show=pic1' type='text/javascript'></script>
+<script src='https://s22.cnzz.com/z_stat.php?id={{site.cnzz_track_id}}&show=pic1' type='text/javascript'></script>
 {% endif %}
 
 <!-- Side Catalog -->

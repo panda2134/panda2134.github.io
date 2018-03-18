@@ -41,7 +41,7 @@ kramdown:
   toc_levels:     1..6
   input: 		  GFM                            # use Github Flavored Markdown !important
   markdown: kramdown
-  entity_output:  as_char
+  entity_output:  as_input
   syntax_highlighter: rouge
   # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
   # span, block element options fall back to global

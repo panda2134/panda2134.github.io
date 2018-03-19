@@ -250,9 +250,27 @@ $2 \le n \le 100000,1 \le k \le \min(n -1，200)$ .
 
 这个式子是二维的，不过每次递推都只用了第二维上一层的信息，所以和一维的情况类似，同样可以应用斜率优化。不过从最小值变成了最大值，所以式子的形式上面稍有变化。凸壳也变成了上凸的。
 
-具体的式子如下：
+对于每个确定的 $p$ ，只会用到 $f(i, p+1)$ 的信息。我们不妨记 $f(i, p+1) = g(i)$ ，就变成了斜率优化的形式。
 
-（咕咕咕咕咕，明天填）
+我们设 $\alpha > \beta$ 且取 $j=\alpha$ 优于 $j=\beta$  ，则有
+
+$$
+g(\alpha) + \sumc(\alpha) \cdot [\sumc(i) - \sumc(\alpha)] > g(\beta) + \sumc(\beta) \cdot [\sumc(i) - \sumc(\beta)]
+$$
+
+化简后为
+
+$$
+[g(\alpha) - \sumc^2(\alpha)] - [g(\beta) - \sumc^2(\beta)] > \sumc(i)\cdot[\sumc(\beta) - \sumc(\alpha)]
+$$
+
+设 $y_j = g(j) - \sumc^2(j), x_j = \sumc(j)$ ，于是
+
+$$
+\frac{y_{\alpha} - y_{\beta}}{x_{\alpha} - x_{\beta}} > -\sumc(i)
+$$
+
+显然 $x_j$ 单调递增。类似于第一个例题，我们可以证明，如果 $K(\alpha, \beta) = \frac{y_{\alpha} - y_{\beta}}{x_{\alpha} - x_{\beta}}， \forall \alpha > \beta > \gamma$ ，若 $K(\alpha, \beta) \ge K(\beta, \gamma)$ ，最优解一定不在 $j = \beta$ 取得。于是图形一定是上凸的。注意到 $-\sumc(i)$ 单调递减，所以用单调队列处理的时候，类似上题，直接弹出队首即可。
 
 #### 代码
 

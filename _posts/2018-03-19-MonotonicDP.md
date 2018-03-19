@@ -27,10 +27,10 @@ tags:
 
 $f(i)$ 表示前 $i$ 个的最小总代价和。
 
-于是 $f(i) = \min_{0 \le j \le i-1} \{ f(j) + \left(\sum_{j+1 \le k \le i} c_i\right)^2 + M \}$.  边界为 $f(0) = 0$.
+于是 $f(i) = \min_{0 \le j \le i-1} \\{ f(j) + \left(\sum_{j+1 \le k \le i} c_i\right)^2 + M \\}$.  边界为 $f(0) = 0$.
 但是复杂度太高，无法胜任题中数据范围。考虑进行优化。看到 $\min$ ，联想到单调性。
 
-假设在 $j = \alpha$ 时取值优于 $j = \beta$ ，且 $\alpha > \beta$ ， 而 $\{c_n\}$ 前缀和为 $$\text{sum}(i)$$ ，就有：
+假设在 $j = \alpha$ 时取值优于 $j = \beta$ ，且 $\alpha > \beta$ ， 而 $\\{c_n\\}$ 前缀和为 $\text{sum}(i)$ ，就有：
 $$
 \newcommand{sumc}{\text{sum}}
 \begin{align*}
@@ -126,9 +126,7 @@ int main() {
 ```
 
 ### BZOJ1010
-
-DP方程：$f(i) = \min\{f(j) + \left(i - (j+1)+\sum_{j+1 \le k \le i}c_k - L\right)^2 \vert 0 \le j \le i-1\}$
-
+DP方程：$f(i) = \min\\{f(j) + \left(i - (j+1)+\sum_{j+1 \le k \le i}c_k - L\right)^2 \vert 0 \le j \le i-1\\}$
 
 
 

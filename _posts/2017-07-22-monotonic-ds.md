@@ -41,7 +41,8 @@ void insert(int* val,int* s,int idx){ //val为存放序列值的数组，s为单
 例题：[BZOJ-1012][1]
 代码：
 注意输入一个字符的实现，不然有的OJ会报错
-{% highlight cpp linenos%}
+
+```cpp
 //BZOJ 1012
 #include <cstdio>
 #include <cstdlib>
@@ -55,6 +56,7 @@ const int MAXM = 200000;
 int M,D,T,N;
 int s[MAXM+10],val[MAXM+10];//st[0]->size
 inline int readint(){
+
 	int f=1,r=0;char c=getchar();
 	while(!isdigit(c)){if(c=='-')f=-1;c=getchar();}
 	while(isdigit(c)){r=r*10+c-'0';c=getchar();}
@@ -85,11 +87,72 @@ int main(){
 		}
 	}
 }
-{%endhighlight%}
+```
+
 ## 单调队列
 
 特点：先进队列的元素先出，维护某个滑动窗口的单调性。
 
-<center>To Be Done.</center>
+怎么实现？求最大值，就保证队首是最大值，于是维护队首到队尾单调递减。求最小值，就保证队首是最小值，于是维护队首到队尾单调递增。
 
- [1]:http://www.lydsy.com/JudgeOnline/problem.php?id=1012
+和单调栈一样，我们在单调队列中也一般保留元素的下标/地址。
+
+滑动窗口。在 $O(n)$ 复杂度内求出区间内每一段长为 $W$ 的区间的最大或最小值。 直接用单调队列实现。不妨假设求最大值。元素入队时，弹出队尾所有小于等于它的元素，再插入。窗口向右边滑动的时候，检查队首元素下标是否等于离开窗口元素下标，如果是的话就弹出队首，否则什么都不做。要取窗口最大值的时候，检查队首元素即可。
+
+例题：[Luogu-1886][2]
+
+代码：
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXN = 1e6;
+int N, K, A[MAXN+10], AnsMin[MAXN+10], AnsMax[MAXN+10];
+deque<int> Q;
+inline int readint() {
+    int f=1,r=0; char c=getchar();
+    while(!isdigit(c)) { if(c=='-')f=-1; c=getchar(); }
+    while(isdigit(c)) { r=r*10+c-'0'; c=getchar(); }
+    return f*r;
+}
+int main() {
+    scanf("%d%d", &N, &K);
+    for(int i=1; i<=N; i++) A[i]=readint();
+    Q.clear();
+    //Process Min
+    for(int i=1; i<=K; i++) {
+        while(!Q.empty() && A[Q.back()] > A[i]) Q.pop_back();
+        Q.push_back(i);
+    }
+    AnsMin[K]=A[Q.front()];
+    for(int i=K+1; i<=N; i++) {
+        //Clear front
+        while(!Q.empty() && Q.front() < i-K+1) Q.pop_front();
+        //Clear end
+        while(!Q.empty() && A[Q.back()] > A[i]) Q.pop_back();
+        Q.push_back(i); AnsMin[i]=A[Q.front()];
+    }
+    Q.clear();
+    //Process Max
+    for(int i=1; i<=K; i++) {
+        while(!Q.empty() && A[Q.back()] < A[i]) Q.pop_back();
+        Q.push_back(i);
+    }
+    AnsMax[K]=A[Q.front()];
+    for(int i=K+1; i<=N; i++) {
+        //Clear front
+        while(!Q.empty() && Q.front() < i-K+1) Q.pop_front();
+        //Clear end
+        while(!Q.empty() && A[Q.back()] < A[i]) Q.pop_back();
+        Q.push_back(i); AnsMax[i]=A[Q.front()];
+    }
+    for(int i=K; i<=N; i++) printf("%d%c", AnsMin[i], " \n"[i==N]);
+    for(int i=K; i<=N; i++) printf("%d%c", AnsMax[i], " \n"[i==N]);
+    return 0;
+}
+```
+
+
+
+[1]:http://www.lydsy.com/JudgeOnline/problem.php?id=1012
+[2]:https://www.luogu.org/problemnew/show/P1886

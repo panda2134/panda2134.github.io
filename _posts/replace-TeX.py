@@ -3,7 +3,7 @@ from os import listdir, SEEK_SET
 from io import StringIO
 # $$
 for filename in listdir():
-	if filename.split('.')[1] != 'md':
+	if len(filename.split('.')) <= 1 or filename.split('.')[1] != 'md':
 		continue
 	print("Opening", filename)
 	tmp = StringIO()
@@ -24,7 +24,7 @@ for filename in listdir():
 
 # \{
 for filename in listdir():
-	if filename.split('.')[1] != 'md':
+	if len(filename.split('.')) <= 1 or filename.split('.')[1] != 'md':
 		continue
 	print("Opening", filename)
 	tmp = StringIO()

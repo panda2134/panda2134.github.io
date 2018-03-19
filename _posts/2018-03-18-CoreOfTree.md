@@ -1,6 +1,7 @@
---- 
+---
 categories: 解题报告
 comments: true
+title: "[NOIP2007]树网的核"
 layout: post
 tags: 
   - 图论
@@ -9,7 +10,6 @@ tags:
   - 数据结构
   - 单调队列
   - two-pointers
-title: "[NOIP2007]树网的核"
 ---
 
 [BZOJ-1999](http://www.lydsy.com/JudgeOnline/problem.php?id=1999)    
@@ -17,7 +17,7 @@ title: "[NOIP2007]树网的核"
 ## 题意
 给出一棵树，求一条路径使得树上点到它的距离的最大值最小。   
 $n \leq 300000$.    
-   
+
 ## 思路
 好题。
 很早就看到过这个题目了，除了暴力没有任何思路……   
@@ -26,29 +26,29 @@ $n \leq 300000$.
 
 ### 树的直径的性质
 树的直径有什么性质呢？回顾一下两次 DFS 找树的直径的过程，我们可以得到以下的性质：    
- 1. 树上的任何一个点的最远点，一定是某条直径的端点。   
- 2. 所有直径中点过定点。   
+    1. 树上的任何一个点的最远点，一定是某条直径的端点。   
+    2. 所有直径中点过定点。   
 
 ### 分析
 我们可以证明，最优选定路径一定在某条直径上。  （如果证明有问题欢迎留言= =）
 这需要分2种情况讨论。我们采用反证法。   
 1. 选定的路径与直径不相交。这时我们需要证明选定路径不是最优的。如图，$<a, b>$ 为直径，$<c,d>$ 为选定路径。我们发现，如果 $c$ 左侧有点 $c'$, $d$ 右侧有点 $d'$, 那么一定有 $\vert fc' \vert < \vert af \vert$ ；对 $d$ 而言也有 $\vert  fd' \vert < \vert fb \vert$，也就是说把选定路径长度不变地移动到直径 $ab$ 上，且盖住 $f$，答案只会更好。   
-![CorePic1](https://panda2134.tk/img/core01.jpg)
+     ![CorePic1](https://panda2134.tk/img/core01.jpg)
 2. 路径与直径有部分重合（自然也包含全部重合的情况）。如图。   
-在这种情况下，由直径的性质可知 $\vert be \vert \ge \vert de \vert$, 于是把 $\vert ed \vert$ 一段移动到 $\vert eb \vert$，答案不会更差。   
-![CorePic2](https://panda2134.tk/img/core02.jpg)
-于是命题得证。  
-我们再证明，即使存在多条直径，最优解也满足上述性质。   
-不失一般性，我们分析2条直径，且树的中心在边上的情况。   
-于是一定有 $\vert ap \vert = \vert a'p \vert, \vert bq \vert = \vert b'q \vert$. 不妨称之为性质3.
-显然，由于$\vert pa' \vert \le \vert pb \vert, \vert qb' \vert \le \vert qa \vert$ ，红色和黄色的路径都不会是最优解。而对于绿色路径，由于直径的性质3，取在哪条直径都一样。于是得证。
-![CorePic3](https://panda2134.tk/img/core03.jpg)
-----------------------------------     
+     在这种情况下，由直径的性质可知 $\vert be \vert \ge \vert de \vert$, 于是把 $\vert ed \vert$ 一段移动到 $\vert eb \vert$，答案不会更差。   
+       ![CorePic2](https://panda2134.tk/img/core02.jpg)
+       于是命题得证。  
+       我们再证明，即使存在多条直径，最优解也满足上述性质。   
+       不失一般性，我们分析2条直径，且树的中心在边上的情况。   
+       于是一定有 $\vert ap \vert = \vert a'p \vert, \vert bq \vert = \vert b'q \vert$. 不妨称之为性质3.
+       显然，由于$\vert pa' \vert \le \vert pb \vert, \vert qb' \vert \le \vert qa \vert$ ，红色和黄色的路径都不会是最优解。而对于绿色路径，由于直径的性质3，取在哪条直径都一样。于是得证。
+       ![CorePic3](https://panda2134.tk/img/core03.jpg)
+----------------------------------
 
 证明了上述的定理，我们就可以设计主算法了：
 
 1. 2次BFS找出直径。这对于带有**任意非负权值**的树**都成立**！！！
-2.  显然贪心地取得最大可行长度的路径，答案不会更差。于是用 two-pointers 从直径的一端向另一端扫。如图。引用chrt学姐的一句话：
+2. 显然贪心地取得最大可行长度的路径，答案不会更差。于是用 two-pointers 从直径的一端向另一端扫。如图。引用chrt学姐的一句话：
 > 换一种看待树的方式，把直径横着，其他点挂在下方。（就像架子上的葡萄～）
 
 ![CorePic4](https://panda2134.tk/img/core04.jpg)
@@ -58,7 +58,7 @@ $n \leq 300000$.
 ## 一点吐槽
 1. 一定要记住，两次BFS找出直径，对于带有**任意非负权值**的树**都成立**……今年的冬令营第一题的44分送分里面就用了这个。我以为这个只对于无权的树成立，然后不知道怎么办。忽然想起来前几天看的点分治，然而根本没写过，当场yy怎么写……然后T2的送50分就没调出来……出考场之后，cxy神犇跟我说，我才发现……囧rz
 2. 第一次看到这个加强版是在chrt的某个NOIP模拟赛里面……这个题目其实就是\[SDOI2011\]消防……那场模拟赛第一题是\[SDOI2010\]地精部落……emmmmmm，难度略高于某些年份的NOIP。
-![Huaji](/img/emotion/huaji.png)
+     ![Huaji](/img/emotion/huaji.png)
 
 ## 代码
 ```cpp

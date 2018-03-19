@@ -244,9 +244,84 @@ $2 \le n \le 100000,1 \le k \le \min(n -1，200)$ .
 
 我们知道暴力DP是 $O(n^3k)$ 的复杂度，只有 22pts 。
 
-状态转移方程里面必须有 $k$ ，所以要想办法把区间 DP 转为序列 DP 来降低复杂度。
+状态转移方程里面必须有 $k$ ，所以要想办法把区间 DP 转为序列 DP 来降低复杂度。注意到划分的顺序对于答案没有影响，我们可以考虑对于每个块计算贡献。不妨设序列为 $\\{c_n\\}$ ， 如果 $\sum_{1 \le i \le k} c_i = \sumc(k)$ ，那么每个块 $[p, q]$ 的贡献是 $\sumc(p-1) \cdot [\sumc(q)-\sumc(p-1)]$ （想一想，为什么只计算左侧贡献）.
 
-（未完待续）
+这样就可以有一个 $O(n^2k)$ 的做法：如果 $f(i, p)$ 为划分好 $[1, i]$ 之后且还剩下 $p$ 次划分的答案，那么就有 $f(i,p)=\max\\{f(j,p+1)+ \sumc(j) \cdot [\sumc(i) - \sumc(j)] \vert 0 \le j \le i-1\\}$ .
+
+这个式子是二维的，不过每次递推都只用了第二维上一层的信息，所以和一维的情况类似，同样可以应用斜率优化。不过从最小值变成了最大值，所以式子的形式上面稍有变化。凸壳也变成了上凸的。
+
+具体的式子如下：
+
+（咕咕咕咕咕，明天填）
+
+#### 代码
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long int64;
+
+const int MAXN = 1e5, MAXK = 200;
+
+int64 N, K, Sum[MAXN+10], opt[MAXN+10][2]; int to[MAXN+10][MAXK+10];
+int Hd = 1, Tl = 0, Q[MAXN+10];
+
+inline int readint() {
+	int f=1, r=0; char c=getchar();
+	while(!isdigit(c)) { if(c=='-')f=-1; c=getchar(); }
+	while(isdigit(c)) { r=r*10+c-'0'; c=getchar(); }
+	return f*r;
+}
+
+#define GetY(i, p) (opt[(i)][((p)+1)&1] - Sum[(i)] * Sum[(i)])
+#define GetX(i) (Sum[(i)])
+
+int main() {
+	int64 Ans = 0, MaxP = 0;
+	static int S[(MAXN+10)<<1]; // std::stack<int> 非常慢！！！！！！！
+	N = readint(); K = readint();
+	for(int i = 1; i <= N; i++)
+		Sum[i] = readint() + Sum[i-1];
+	{
+		memset(opt, 0xdf, sizeof(opt));
+		opt[0][K&1] = 0;
+		for(int p = K-1; p >= 0; p--) {
+			Hd = 1, Tl = 0; Q[++Tl] = 0;
+			for(int i = 0; i <= N; i++) opt[i][p&1] = 0xdfdfdfdfdfdfdfdfLL;
+			for(int i = 1; i <= N; i++) {
+				while(Tl - Hd + 1 >= 2 &&
+					(GetY(Q[Hd+1], p) - GetY(Q[Hd], p)) >= (-Sum[i]) * (GetX(Q[Hd+1]) - GetX(Q[Hd])))
+					++Hd;
+				int j = Q[Hd];
+				opt[i][p&1] = opt[j][(p+1)&1] + (Sum[i] - Sum[j]) * Sum[j];
+				to[i][p] = j;
+				while(Tl - Hd + 1 >= 2 &&
+					(GetY(i, p) - GetY(Q[Tl], p)) * (GetX(Q[Tl]) - GetX(Q[Tl-1]))
+					>= (GetX(i) - GetX(Q[Tl])) * (GetY(Q[Tl], p) - GetY(Q[Tl-1], p)))
+					--Tl;
+				Q[++Tl] = i;
+			}
+		}
+		for(int i = 1; i <= N-1; i++)
+			if(opt[i][0&1] + Sum[i] * (Sum[N] - Sum[i]) >= Ans) {
+				Ans = opt[i][0&1] + Sum[i] * (Sum[N] - Sum[i]);
+				MaxP = i;
+			}
+		printf("%lld\n", Ans);
+		for(int i = MaxP, j = 0; j <= K; i = to[i][j], j++)
+			S[++S[0]] = i;
+		--S[0];
+		while(S[0]) {
+			int64 t = S[S[0]]; --S[0];
+			printf("%lld ", t);
+		}
+	}
+	return 0;
+}
+```
+
+
 
 ## 四边形不等式
 

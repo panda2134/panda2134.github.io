@@ -1,5 +1,5 @@
 ---
-title: [SCOI2012]喵星球上的点名
+title: "[SCOI2012]喵星球上的点名"
 layout: post
 categories:
   - 解题报告

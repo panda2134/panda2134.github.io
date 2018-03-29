@@ -31,10 +31,10 @@ tags:
 
 $f(i)$ 表示前 $i$ 个的最小总代价和。
 
-于是 $f(i) = \min_{0 \le j \le i-1} \\{ f(j) + \left(\sum_{j+1 \le k \le i} c_i\right)^2 + M \\}$.  边界为 $f(0) = 0$.
+于是 $f(i) = \min_{0 \le j \le i-1} \\\{ f(j) + \left(\sum_{j+1 \le k \le i} c_i\right)^2 + M \\\}$.  边界为 $f(0) = 0$.
 但是复杂度太高，无法胜任题中数据范围。考虑进行优化。看到 $\min$ ，联想到单调数据结构。
 
-假设在 $j = \alpha$ 时取值优于 $j = \beta$ ，且 $\alpha > \beta$ ， 而 $\\{c_n\\}$ 前缀和为 $\text{sum}(i)$ ，就有：
+假设在 $j = \alpha$ 时取值优于 $j = \beta$ ，且 $\alpha > \beta$ ， 而 $\\\{c_n\\\}$ 前缀和为 $\text{sum}(i)$ ，就有：
 $$
 \newcommand{\sumc}{\text{sum}}
 \begin{align*}
@@ -63,7 +63,7 @@ $$
 
 我们下面就证明一个一般的结论。
 
-对于形如 $f(i) = \min\\{f(j) + g(i, j) \vert j < i\\}$ 形式的状态转移方程，假如 $\alpha < \beta < \gamma$ ，而且化简后满足 $\frac{y_{\alpha} - y_{\beta}}{x_{\alpha} - x_{\beta}} < A(i)$ ，则只要 $x_i$ （非严格地）单调递增，而且 $K(\beta,\alpha) \ge K(\gamma, \beta)$ ，那么在求 $f(i)$ 时，一定不会在 $j = \beta$ 处取得最小值。
+对于形如 $f(i) = \min\\\{f(j) + g(i, j) \vert j < i\\\}$ 形式的状态转移方程，假如 $\alpha < \beta < \gamma$ ，而且化简后满足 $\frac{y_{\alpha} - y_{\beta}}{x_{\alpha} - x_{\beta}} < A(i)$ ，则只要 $x_i$ （非严格地）单调递增，而且 $K(\beta,\alpha) \ge K(\gamma, \beta)$ ，那么在求 $f(i)$ 时，一定不会在 $j = \beta$ 处取得最小值。
 
 1. 当 $K(\gamma, \beta) < A(i)$ 时：由上式定义知，取得 $j = \gamma$ 优于 $j = \beta$ . 所以不会在 $j = \beta$ 取得最小值。
 2. 当 $K(\gamma, \beta) \ge A(i)$ 时：取得 $j=\beta$ 优于 $j = \gamma$ ，但是取得 $j=\alpha$ 优于 $j = \beta$ ，所以仍然不会取得 $j = \beta$ .
@@ -139,7 +139,7 @@ int main() {
 略。
 
 #### 思路
-DP方程：$f(i) = \min\\{f(j) + \left(\left(i - (j+1)+\sum_{j+1 \le k \le i}c_k\right) - L\right)^2 \vert 0 \le j \le i-1\\}$
+DP方程：$f(i) = \min\\\{f(j) + \left(\left(i - (j+1)+\sum_{j+1 \le k \le i}c_k\right) - L\right)^2 \vert 0 \le j \le i-1\\\}$
 
 同样应用斜率优化：设在 $j=\alpha$ 处取值优于 $j=\beta$ ，且 $\alpha > \beta$ . 设 $\sumc(i) = \sum_{1 \le k \le i}c_k$ .
 
@@ -244,9 +244,9 @@ $2 \le n \le 100000,1 \le k \le \min(n -1，200)$ .
 
 我们知道暴力DP是 $O(n^3k)$ 的复杂度，只有 22pts 。
 
-状态转移方程里面必须有 $k$ ，所以要想办法把区间 DP 转为序列 DP 来降低复杂度。注意到划分的顺序对于答案没有影响，我们可以考虑对于每个块计算贡献。不妨设序列为 $\\{c_n\\}$ ， 如果 $\sum_{1 \le i \le k} c_i = \sumc(k)$ ，那么每个块 $[p, q]$ 的贡献是 $\sumc(p-1) \cdot [\sumc(q)-\sumc(p-1)]$ （想一想，为什么只计算左侧贡献）.
+状态转移方程里面必须有 $k$ ，所以要想办法把区间 DP 转为序列 DP 来降低复杂度。注意到划分的顺序对于答案没有影响，我们可以考虑对于每个块计算贡献。不妨设序列为 $\\\{c_n\\\}$ ， 如果 $\sum_{1 \le i \le k} c_i = \sumc(k)$ ，那么每个块 $[p, q]$ 的贡献是 $\sumc(p-1) \cdot [\sumc(q)-\sumc(p-1)]$ （想一想，为什么只计算左侧贡献）.
 
-这样就可以有一个 $O(n^2k)$ 的做法：如果 $f(i, p)$ 为划分好 $[1, i]$ 之后且还剩下 $p$ 次划分的答案，那么就有 $f(i,p)=\max\\{f(j,p+1)+ \sumc(j) \cdot [\sumc(i) - \sumc(j)] \vert 0 \le j \le i-1\\}$ .
+这样就可以有一个 $O(n^2k)$ 的做法：如果 $f(i, p)$ 为划分好 $[1, i]$ 之后且还剩下 $p$ 次划分的答案，那么就有 $f(i,p)=\max\\\{f(j,p+1)+ \sumc(j) \cdot [\sumc(i) - \sumc(j)] \vert 0 \le j \le i-1\\\}$ .
 
 这个式子是二维的，不过每次递推都只用了第二维上一层的信息，所以和一维的情况类似，同样可以应用斜率优化。不过从最小值变成了最大值，所以式子的形式上面稍有变化。凸壳也变成了上凸的。
 

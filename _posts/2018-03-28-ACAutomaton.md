@@ -80,7 +80,7 @@ void insert(char *str) {
 ```cpp
 int f[MAX_NODE+10], last[MAX_NODE+10];
 void get_fail() {
-	queue<int> Q;
+	std::queue<int> Q;
     for(int c = 1; c <= SIGMA; c++) if(ch[0][c]) {
         int v = ch[0][c];
         f[v] = last[v] = 0; Q.push(v);
@@ -122,6 +122,21 @@ void search(char *str) {
 }
 ```
 
-## 与DP结合
+## 例题
 
-To Be Done
+其实AC自动机不过就是个状态转移图而已，图论的玩法一般也都适用。
+
+单串的多模式匹配这种板子题就不放了。
+
+### [\[POI2000\]病毒](https://www.luogu.org/problemnew/show/P2444) 
+
+建立了AC自动机之后就是要判断有没有从0可以到达的环。sb的我最开始居然还在BFS……过了好久我才想起来有拓扑排序这种东西= = 拓扑排序即可。存在拓扑序输出 "NIE"，否则输出 "TAK".
+
+> 有向无环图存在拓扑序。如果无法找出拓扑序，说明图不是有向无环图。——刘汝佳《算法竞赛入门经典》
+
+（以及编译输出文件名写成了源代码，直接把源代码覆盖了……重新打了一遍……省选的时候，一定不能犯这样的低级错误！写完了就用GUI备份一份，不要用`rm,mv,cp`什么的！编译最好也别敲命令！用gedit的External Tool！）
+
+
+
+
+

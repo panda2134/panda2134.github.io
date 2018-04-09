@@ -58,7 +58,7 @@ $$
 考虑设出两只猪的坐标 $(x_1,y_1)$ 和 $(x_2,y_2)$ 
 由初中知识可以列出方程：
 
-$\left\\\{\begin{matrix}
+$\left\{\begin{matrix}
 ax_1^2+bx_1=y_1 \\ 
 ax_2^2+bx_2=y_2 \\ 
 \end{matrix}\right.
@@ -67,7 +67,7 @@ $$
 联立方程可以解出：
 
 $$
-\left\\\{\begin{matrix}
+\left\{\begin{matrix}
 a=\frac{y_2 x_1 - y_1 x_2}{ x_1 x_2 (x_2-x_1) } & \\ 
 b=\frac{y_1 x_2^2 - y_2 x_1^2} {x_1 x_2 (x_2-x_1)} & \\ 
 \end{matrix}\right.

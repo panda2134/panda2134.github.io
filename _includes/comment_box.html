@@ -63,6 +63,11 @@
     <!-- gitment 评论框+js end -->
     {% endif %}
     <!-- Valine 评论框+js start-->
+    <style>
+        .v .vlist .vcard .vcontent {
+            font-size: 1.5rem !important;
+        }
+    </style>
     {% if site.valine_app_id %}
     <div class="comment"></div>
     <!--Leancloud 操作库:-->

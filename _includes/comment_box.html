@@ -73,7 +73,7 @@
     <!--Leancloud 操作库:-->
     <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
     <!--Valine 的核心代码库:-->
-    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script src="/js/Valine.min.js"></script>
     <script>
         new Valine({
             av: AV, 
@@ -81,8 +81,8 @@
             app_id: '{{ site.valine_app_id }}', 
             app_key: '{{ site.valine_app_key }}', 
             placeholder: '',
-            notify: {{ site.valine_notify }}, 
-            verify: {{ site.valine_verify }}
+            notify: false,
+            verify: false
         });
     </script>
     {% endif %}

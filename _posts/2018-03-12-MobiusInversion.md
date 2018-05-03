@@ -92,12 +92,12 @@ $$
 这个形式比较常用.           
 ​              
 我们不妨假设 $n, d \le N$ . 则:  
-​              
-$$
-F(n) = \sum_{n \backslash d}f(d) \Leftrightarrow f(n) = \sum_{n \backslash d} \mu(\frac{d}{n})F(d)
-$$
-
-这个比较难证明……想了好久……            
+              
+$$    
+F(n) = \sum_{n \backslash d}f(d) \Leftrightarrow f(n) = \sum_{n \backslash d} \mu(\frac{d}{n})F(d)    
+$$      
+      
+这个比较难证明……想了好久……             
 ​             
 证明:            
 ​                  

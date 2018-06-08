@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "最长回文子串"
+title: "最长双回文串"
 categories:
   - 解题报告
 tags:

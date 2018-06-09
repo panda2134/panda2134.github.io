@@ -93,10 +93,10 @@ $$
 ​              
 我们不妨假设 $n, d \le N$ . 则:  
               
-$$    
+$$
 F(n) = \sum_{n \backslash d}f(d) \Leftrightarrow f(n) = \sum_{n \backslash d} \mu(\frac{d}{n})F(d)    
-$$      
-      
+$$
+
 这个比较难证明……想了好久……             
 ​             
 证明:            
@@ -176,7 +176,7 @@ QED.
 
 一点感想：做数论题目一定要等忘了题解再做一次！这样才能看出你真正掌握没有！
 
-## BZOJ2440 完全平方数
+### BZOJ2440 完全平方数
 
 求小于等于 $n$ 的无平方因子数个数。双倍经验：vijos天真的因数分解。
 
@@ -195,13 +195,37 @@ QED.
 $\Rightarrow \text{ans} = \sum_{d=1}^{\sqrt{n}} \mu(d) \left\lfloor\frac{n}{d^2}\right\rfloor$ . 可以整除分块求出。复杂度为 $O(n^{1/4})$ （不知道是不是算错了= =）
 
 ### BZOJ2301 [HAOI2011]Problem b
-莫比乌斯反演+数论分块，达到单组询问 $O(\sqrt{n})$ ​的复杂度。
+莫比乌斯反演+数论分块，达到单组询问 $O(\sqrt{n})$ 的复杂度。
 
+### BZOJ3529 [SDOI2014] 数表
 
+多组数据，直接类似求 $\sum_{i=1}^n\sum_{j=1}^m[\gcd(i, j) = d]$ 的暴力整除分块显然用不了。
+
+考虑化式子，化成整除分块的量与数据无关的形式。
+
+先考虑没有 $a$ 的限制怎么做。设 $n \le m$ ，如果 $n > m$ 将二者交换即可。
+
+注意灵活地在枚举所有约数和所有倍数之间转换。
+$$
+\begin{align*}
+\sum_{i=1}^n \sum_{j=1}^m \sigma\left(\gcd(i, j)\right) &= \sum_{k=1}^n\sigma(k)\sum_{i=1}^n \sum_{j=1}^m[\gcd(i, j) = k] \\
+&= \sum_{k=1}^n \sigma(k) \sum_{k \backslash d}\mu\left(\frac{d}{k}\right)\left\lfloor\frac{n}{d}\right\rfloor\left\lfloor\frac{m}{d}\right\rfloor \\
+&= \sum_{d=1}^n \sum_{k \backslash d}\sigma(k) \mu\left(\frac{d}{k}\right)\left\lfloor\frac{n}{d}\right\rfloor\left\lfloor\frac{m}{d}\right\rfloor \\
+&= \sum_{d=1}^n \left\lfloor\frac{n}{d}\right\rfloor\left\lfloor\frac{m}{d}\right\rfloor \sum_{k \backslash d}\sigma(k) \mu\left(\frac{d}{k}\right) \\
+\end{align*}
+$$
+
+设 $\gamma = \sigma * \mu$，我们可以筛出 $\sigma, \mu$ 后通过枚举倍数来在 $O(n \log n)$ 的复杂度内求出 $\gamma$ 函数。
+
+于是上式$\:= \sum_{d=1}^n \left\lfloor\frac{n}{d}\right\rfloor\left\lfloor\frac{m}{d}\right\rfloor \gamma(d) $。
+
+当有了 $a$ 的限制后，只有 $\sigma(k) \le a$ 的对答案有贡献。把询问离线，并按照 $a$ 排序，每次加入一部分 $\gamma(n)$ 的函数值，并求出前缀和——这可以用树状数组实现。每次对于一个 $\sigma(k)$ 枚举它的倍数，然后加入树状数组。
+
+---
 
 
 参考链接:                
 
-**强烈推荐:**[PoPoQQQ的PPT](https://wenku.baidu.com/view/fbec9c63ba1aa8114431d9ac.html)                 
-
-[莫比乌斯反演定理证明](http://blog.csdn.net/outer_form/article/details/50588307)              
+**强烈推荐:**
+ - [PoPoQQQ的PPT](https://wenku.baidu.com/view/fbec9c63ba1aa8114431d9ac.html)                 
+ - [莫比乌斯反演定理证明](http://blog.csdn.net/outer_form/article/details/50588307)              

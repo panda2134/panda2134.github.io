@@ -151,5 +151,9 @@ friends: [
 	{
 		title: "玫葵之蝶",
 		href: "https://stone41123.coding.me/stone41123/"
+	},
+    {
+		title: "宜昌一中 Online Judge",
+		href: "https://oj.ycyzoi.com/"
 	}
 ]

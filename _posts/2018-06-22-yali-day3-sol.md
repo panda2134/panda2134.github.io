@@ -1,14 +1,12 @@
 ---
 layout: post
 comments: true
-title: "湖南省队雅礼集训day3题解"
+title: "湖南省队雅礼集训Day3题解"
 categories:
   - 解题报告
 tags:
-  - base64
   - 贪心
   - 数列
-  - 分段打表
   - FFT
   - 分治
   - 多项式
@@ -61,9 +59,11 @@ $$
 打表后发现 $f(n)$ 表示 $n$ 这个数字在 $\{f_n\}$ 这一数列中出现几次。
 
 前面几项大概是这样：
+
 $$
 1, 2, 2, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 6,\cdots
 $$
+
 这启发我们解读每个函数的组合意义。
 
 $g(n)$ 是 $f(n)$ 的前缀和，表示最后一个 $n$ 在数列中的下标。
@@ -71,12 +71,15 @@ $g(n)$ 是 $f(n)$ 的前缀和，表示最后一个 $n$ 在数列中的下标。
 $h(n)$ 有点难办，但是我们可以分开看：显然 $g(f(n)) - f(f(n))$ 表示 $f(n)-1$ 这个数字的最后一次出现位置。
 
 于是 $h(n)$ 就是对于数列 $\{f_n\}$ 内的每种数字计算一次贡献。也就是说：
+
 $$
 h(n) = g(g(n)) + \sum_{i\text{ is end of a segment in } \{f_n\}, i < n} g(g(i))
 $$
+
 再冷静分析一下 $g(g(i))$ 是什么。在连续数学中我们遇到问题常常求导 + 积分解决。显然这个函数是离散的，考虑离散微积分。如何差分？利用 $g(n)$ 的**定义**！
 
 （注意，离散导数定义是 $\Delta f = f(n+1) - f(n)$！类比导数的 $\frac{\mathrm{d}y}{\mathrm{d}x} = \lim\limits_{\Delta x \to 0} \frac{f(x+\Delta x)-f(x)}{\Delta x}$ ！）
+
 $$
 \begin{align*}
 \Delta \left(g(g(n-1))\right) &= g(g(n)) - g(g(n-1)) \\
@@ -86,6 +89,7 @@ $$
 \Rightarrow
 g(g(n)) =  \sum\nolimits_0^n \Delta(g(g(i))) = \sum\nolimits_0^ni \times f_i
 $$
+
 于是 $\{h_n\}$ 就可以递推了。注意处理边界。
 
 直接暴力 $O(n)$ 算只有 50pts. 正解先坑着，明天或者后天更。

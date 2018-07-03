@@ -122,7 +122,7 @@ friends: [
     },
     {
         title: "zjp_shadow",
-        href: "http://cnblogs.com/zjp-shadow"
+        href: "https://cnblogs.com/zjp-shadow"
     },
     {
         title: "nonamenotitle",
@@ -155,5 +155,9 @@ friends: [
     {
 		title: "宜昌一中 Online Judge",
 		href: "https://oj.ycyzoi.com/"
+	},
+	{
+		title: "Sparky_14145",
+		href: "https://sparky-14145.github.io/"
 	}
 ]

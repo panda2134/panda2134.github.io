@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-categories: ['解题报告']
+category: ['解题报告']
 tags: ["最短路","图论","BFS"]
 title: '[USACO14DEC]Piggy Back'
 ---

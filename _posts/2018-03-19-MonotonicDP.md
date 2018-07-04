@@ -3,7 +3,7 @@ layout: post
 comments: true
 catalog: true
 title: 利用单调性优化动态规划
-categories: 笔记
+category: 笔记
 tags:
   - 动态规划
   - 单调栈

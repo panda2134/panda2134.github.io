@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-categories: ['解题报告']
+category: ['解题报告']
 tags: ['序列型DP','动态规划','LCS']
 title: '浴谷八连测-R6-A - 不可逆的重启动'
 ---

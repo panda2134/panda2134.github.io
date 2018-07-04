@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "[六省联考2017]寿司餐厅"
-categories: "解题报告"
+category: "解题报告"
 tags: ["最大权闭合子图","最小割"]
 ---
 

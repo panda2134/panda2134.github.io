@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "湖南省队雅礼集训Day1题解"
-categories:
+category:
   - 解题报告
 tags:
   - 倍增LCA

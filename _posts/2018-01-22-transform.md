@@ -2,7 +2,7 @@
 title: "[NOI2009]变换序列"
 layout: post
 comments: true
-categories: "解题报告"
+category: "解题报告"
 tags: ["二分图","匈牙利算法","贪心","字典序"]
 ---
 

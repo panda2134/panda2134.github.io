@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "PyFormula-用在线API实现的公式编辑器"
-categories:
+category:
  - 开发
 tags:
  - Python

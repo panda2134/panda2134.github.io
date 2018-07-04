@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: ["解题报告"]
+category: ["解题报告"]
 tags: ["状压DP","数学"]
 comments: true
 title: "[NOIP2016]愤怒的小鸟"

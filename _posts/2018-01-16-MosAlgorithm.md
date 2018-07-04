@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "莫队笔记"
-categories: "笔记"
+category: "笔记"
 tags: ["分块","莫队"]
 ---
 

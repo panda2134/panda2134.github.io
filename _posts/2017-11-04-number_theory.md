@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-categories: ['笔记']
+category: ['笔记']
 tags: '数论'
 title: '数论基础'
 ---

@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "[SCOI2012]奇怪的游戏"
-categories: "解题报告"
+category: "解题报告"
 tags: ["网络流","二分答案","数学"]
 ---
 

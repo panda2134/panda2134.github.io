@@ -100,10 +100,10 @@ layout: default
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-search"></span>
                                 </span>
-                                <input id="search-input" type="text" class="form-control" placeholder="What to look up for?">
+                                <input id="searchInput" type="text" class="form-control" placeholder="What to look up for?">
                             </div>
                         </form>
-                        <ul class="search-results-container">
+                        <ul id="searchResultsContainer">
 
                         </ul>
                     </div>
@@ -229,10 +229,20 @@ layout: default
 
 <!-- Init search -->
 <script>
+    // SimpleJekyllSearch({
+    //     searchInput: document.getElementById('searchInput'),
+    //     resultsContainer: document.getElementById('searchResultsContainer'),
+    //     json: '/search.json',
+    //     searchResultTemplate: '{% include search_result.html %}',
+    //     fuzzy: true,
+    //     templateMiddleware: function(prop, value, template) {
+    //         return value.replace(template, "<b class='search-match'>" + template + "</b>");
+    //     }
+    // })
     SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('search-results-container'),
-        json: '/search.json',
+        searchInput: document.getElementById('searchInput'),
+        resultsContainer: document.getElementById('searchResultsContainer'),
+        json: '{{ "/search.json" | prepend: site.baseurl }}',
         searchResultTemplate: '<li><a href="{{ site.url }}{url}">{title}</a></li>'
     })
 </script>

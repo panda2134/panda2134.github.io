@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-categories: ['计划']
+category: ['计划']
 tags: ['动态规划']
 title: '占坑'
 ---

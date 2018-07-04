@@ -1,6 +1,6 @@
 ---
 title: AC自动机学习笔记
-categories:
+category:
   - 笔记
 tags:
   - AC自动机

@@ -81,6 +81,7 @@ layout: default
                 col-xs-12
                 sidebar-container
             ">
+<<<<<<< HEAD
 		<!-- Search Button -->
 		<hr class="hidden-sm hidden-xs">
 		<button data-toggle="modal" data-target="#searchModal">
@@ -110,6 +111,8 @@ layout: default
                 </div>
             </div>
         </div>
+=======
+>>>>>>> parent of fab1ffc... step1
                 <!-- Featured Tags -->
                 {% if site.featured-tags %}
                 <section>
@@ -226,23 +229,3 @@ layout: default
         {% endif %}
 	</div>
 </div>
-
-<!-- Init search -->
-<script>
-    // SimpleJekyllSearch({
-    //     searchInput: document.getElementById('searchInput'),
-    //     resultsContainer: document.getElementById('searchResultsContainer'),
-    //     json: '/search.json',
-    //     searchResultTemplate: '{% include search_result.html %}',
-    //     fuzzy: true,
-    //     templateMiddleware: function(prop, value, template) {
-    //         return value.replace(template, "<b class='search-match'>" + template + "</b>");
-    //     }
-    // })
-    SimpleJekyllSearch({
-        searchInput: document.getElementById('searchInput'),
-        resultsContainer: document.getElementById('searchResultsContainer'),
-        json: '{{ "/search.json" | prepend: site.baseurl }}',
-        searchResultTemplate: '<li><a href="{{ site.url }}{url}">{title}</a></li>'
-    })
-</script>

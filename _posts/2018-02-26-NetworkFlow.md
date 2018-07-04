@@ -1,6 +1,6 @@
 ---
 title: "网络流常见建模总结"
-category: ["总结"]
+categories: ["总结"]
 tags: ["网络流","图论","二分图"]
 comments: true
 catalog: true

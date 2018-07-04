@@ -1,6 +1,6 @@
 ---
 title: "[NOI2014]魔法森林"
-category: '解题报告'
+categories: '解题报告'
 tags: ['Link-Cut Tree', '并查集', '生成树']
 comments: true
 ---

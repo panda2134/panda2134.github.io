@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "莫比乌斯反演学习笔记"
-category: "笔记"
+categories: "笔记"
 catalog: true
 tags: ["数论","莫比乌斯反演"]
 ---

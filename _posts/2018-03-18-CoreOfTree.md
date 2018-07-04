@@ -1,5 +1,5 @@
 ---
-category: 解题报告
+categories: 解题报告
 comments: true
 title: "[NOIP2007]树网的核"
 layout: post

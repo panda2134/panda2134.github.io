@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-category: ['解题报告']
+categories: ['解题报告']
 tags: ["最短路","图论","动态规划","序列型DP"]
 title: '[ZJOI2006]物流运输'
 ---

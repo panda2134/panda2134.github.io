@@ -1,7 +1,7 @@
 ---
 title: "[SCOI2012]喵星球上的点名"
 layout: post
-category:
+categories:
   - 解题报告
 tags:
   - 后缀数组

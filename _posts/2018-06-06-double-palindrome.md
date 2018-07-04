@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "最长双回文串"
-category:
+categories:
   - 解题报告
 tags:
   - 哈希

@@ -1,0 +1,69 @@
+=================================================================
+https://keybase.io/panda_2134
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://panda2134.tk
+  * I am panda_2134 (https://keybase.io/panda_2134) on keybase.
+  * I have a public key with fingerprint 1057 B90F A5C7 0A7C 5629  CE68 A5BF 146F 7FF1 1642
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120ab415a26f7dd9fc54063a6c6e92b412832dcc84ed44cb1254b4bfc2b9d290e9d0a",
+      "fingerprint": "1057b90fa5c70a7c5629ce68a5bf146f7ff11642",
+      "host": "keybase.io",
+      "key_id": "a5bf146f7ff11642",
+      "kid": "010100d66829ada9fccb9d8f8c952b23fd02058efa94275a682c47273e6199bfe2780a",
+      "uid": "ba35be62b277d0bd9676c320b90b1319",
+      "username": "panda_2134"
+    },
+    "service": {
+      "hostname": "panda2134.tk",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1530683008,
+  "expire_in": 157680000,
+  "prev": "4403fb694cb61875d46cd91952e73fc1b7eb3cd92df46aa6c64e8b8fc1331f71",
+  "seqno": 12,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owFtUl1oFUcUvknTBnM1pBIihdsWViKhCTIzOzu7ey0WLUhrMZriQ0HIdX7jknT3
+ursmvY23DYRI0ipUmrzkoVWCJpQ0FoxoBW0rVEVb8CdtCrVFjOAPWBOLxRKadPbS
+QB+ceRjmnO/7znfOzCcrnkmVlx35pjb4cK5uY9nleyy149XWvm6DBaJgZLuNdlk6
+ZIeQUZxr94SRNQBEgDIMLYqIsoVwFbcwICYlnEgX6QxyTCQ4d7AUGHMGkYUZZooj
+5grkAukKQI0mQ3l+mwzzoefHWhYCy2YuUNTiNqA2twhyuSQOtZiCWFdSCkKCkSbu
+CqKEoc0xGsm1XqBj+pIr2XsKfsm33kAQ4iCXCqptc+3HUQ53LcSQqQRAwHKkoi5G
+tkU1jmMb2aYk0HWZksh2Sr73lOQYNS0miWbatgBMuMQm3ERA98CgCd0EGMnQp+9K
+jc5TX9AcgiY2ik2Gjnd6XCajTXr5PyaBrI3bNTsfBnHAgw6d2RXH+SibMONCPoF2
+SZb7TyTHPF/oSWpGpwwjL/CNLNRIHnuJKrRMQBwTAKfJkO/lvVDmvARh2cQBeiV1
+ZKeWxBiYagcjrn4xAh3bEphw4UI9HGmbikNmS2bqCBIKE5q8NpYOc3TGNKGyoZH0
+tdsPtDjSRmmbFo28Np/Ge0JpFKsGyjIVqbLy1HPPliefLFW1rGbp53U+qFwMN5bP
+OqraOFsBZm8N7b+cPvbQGdk70PNlw7bCJPn5/N5D9enfPp/59rPMmcLc143Db9c1
+bFj96+Tx2y/sHP197p/lr5yaap5oHD76jv/9ioe/LJ6oHB+rncq1Tp77s+WDjvl9
+rz1qTmcr1pxBVeFEpubam8evrpPz/bL3+kJdy6C6tOXWgztXRg5kb0xvGf/pyTr/
+8I8XDqKTQzfR4d6Vovj6vtzdhVOP/pr5+KvWxZfHpj/6Id0e3jhWPbb9jXwrfnHT
+VPR+3xf1d0dXXeppvj//eEPl8mWfrt9Ze/4cGpxe/dL8H3/3fXd6tP/J7MzKO8Xu
+i893+cWWx1ONzVuzmzOrNh+8/1aqcn/0Lw==
+=gcWG
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/panda_2134
+
+==================================================================
+

@@ -8,6 +8,10 @@ p.search-content {
     border-bottom-width: 1px;
     border-bottom-style: dashed;
     border-bottom-color: #ccc;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
     font-size: 15px;
     color: #000;
 }

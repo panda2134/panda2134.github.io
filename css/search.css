@@ -1,13 +1,18 @@
-.search-match {
-    color: #dd0000;
-}
-
 a.search-title {
     font-size: 16px;
     font-weight: bold;
+    color: #000 !important;
 }
 
 p.search-content {
-    border-bottom: #aaaaaa, dashed, 5px;
+    border-bottom: 1px, dashed, #ccc;
     font-size: 15px;
+    color: #000;
+}
+
+button.search-button {
+    width: -webkit-fill-available;
+    color: #000;
+    background-color: transparent;
+    border: 0px;
 }

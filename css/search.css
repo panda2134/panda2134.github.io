@@ -5,7 +5,9 @@ a.search-title {
 }
 
 p.search-content {
-    border-bottom: 1px, dashed, #ccc;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-bottom-color: #ccc;
     font-size: 15px;
     color: #000;
 }

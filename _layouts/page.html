@@ -94,7 +94,7 @@ layout: default
                         <!--
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         -->
-                        <form onkeydown="setTimeout('MathJax.Hub.Typeset()', 350); if(event.keyCode == 13) { return false; }">
+                        <form onkeydown="if(event.keyCode == 13) { return false; }">
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-search"></span>
@@ -103,7 +103,7 @@ layout: default
                             </div>
                         </form>
                     </div>
-                    <div class="modal-body" style="height:500px; overflow:auto;"> 
+                    <div id="divSearchContents" class="modal-body" style="height:500px; overflow:auto;"> 
                         <ul id="searchResultsContainer">
 
                         </ul>

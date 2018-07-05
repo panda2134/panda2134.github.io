@@ -14,6 +14,7 @@ title: '[USACO14DEC]Piggy Back'
 2.  $P>B+E$。二者相遇后各自独立地沿着到$N$的最短路走（其实是同一条路），比背着走更好。
 <!--more-->
 ## 代码
+
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -65,6 +66,6 @@ int main() {
 }
 ```
 
- [1]:https://www.luogu.org/problemnew/show/3110
+[1]:https://www.luogu.org/problemnew/show/3110
 
 

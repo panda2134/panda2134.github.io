@@ -14,10 +14,11 @@ p.search-content {
     padding-right: 0px;
     font-size: 15px;
     color: #000;
+    margin: 0px !important;
 }
 
 button.search-button {
-    width: -webkit-fill-available;
+    width: 100%;
     background-color: transparent;
     border: 0px;
 }

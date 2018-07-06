@@ -20,5 +20,6 @@ p.search-content {
 button.search-button {
     width: 100%;
     background-color: transparent;
-    border: 0px;
+    border: none;
+    outline: none;
 }

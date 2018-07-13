@@ -12,6 +12,7 @@ tags:
 ---
 
 才听 @Sparky_14145 说这玩意已经是 NOIP 难度辣！为了避免自己没有 NOIP 水平，特来学习。
+
 $$
 \newcommand{bm}{\boldsymbol}
 $$
@@ -51,16 +52,24 @@ $$
 
 #### 一个例子
 
-考虑矩阵 $\begin{bmatrix}0 & 1 \\ 1 & 1\end{bmatrix}$.
+考虑矩阵 
 
-其特征多项式为 $\det(\lambda\boldsymbol{I}-\boldsymbol{A}) = \det( \begin{bmatrix}\lambda & 0 \\ 0 & \lambda\end{bmatrix}- \begin{bmatrix}0 & 1 \\ 1 & 1\end{bmatrix}) = \begin{vmatrix}\lambda & -1 \\ -1 & \lambda-1\end{vmatrix} = \lambda^2-\lambda-1$.
+$$
+\begin{bmatrix}0 & 1 \\ 1 & 1\end{bmatrix}
+$$
+
+其特征多项式为 
+
+$$
+\det(\lambda\boldsymbol{I}-\boldsymbol{A}) = \det( \begin{bmatrix}\lambda & 0 \\ 0 & \lambda\end{bmatrix}- \begin{bmatrix}0 & 1 \\ 1 & 1\end{bmatrix}) = \begin{vmatrix}\lambda & -1 \\ -1 & \lambda-1\end{vmatrix} = \lambda^2-\lambda-1
+$$
 
 把它自己带入其特征多项式有：
 
 $$
 \begin{align*}
 \begin{bmatrix}0 & 1 \\ 1 & 1\end{bmatrix}^2 - \begin{bmatrix}0 & 1 \\ 1 & 1\end{bmatrix} - \boldsymbol{I} &= \begin{bmatrix}1 & 1 \\ 1 & 2\end{bmatrix} - \begin{bmatrix}0 & 1 \\ 1 & 1\end{bmatrix} - \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix}\\
-&= \begin{bmatrix}0 & 0 \\ 0 & 0\end{bmatrix}.
+&= \begin{bmatrix}0 & 0 \\ 0 & 0\end{bmatrix}
 \end{align*}
 $$
 
@@ -92,6 +101,7 @@ $$
 ## 优化矩阵快速幂
 
 不妨考虑以下矩阵快速幂的过程：
+
 $$
 \begin{bmatrix}g_1 \\ g_2 \\ \vdots \\ g_k\end{bmatrix}^T
 
@@ -108,7 +118,9 @@ $$
 
 = \begin{bmatrix}g_2 \\ g_3 \\ \cdots \\ g_{k+1}\end{bmatrix}^T
 $$
+
 我们考察转移用的相伴矩阵的特征多项式：
+
 $$
 \begin{align*}
 \det(\lambda\bm{I}-\bm{A}) &=
@@ -141,6 +153,7 @@ $$
 &= \lambda^k - \sum_{i=1}^k a_i \lambda^{k-i}.
 \end{align*}
 $$
+
 最后一步可以考虑把行列式按第一行展开，然后对代数余子式进行化简。化简过程可以考虑高斯消元法。
 
 要优化矩阵快速幂，就是要快速求出 $\bm{A}^n$. 考虑模掉零化多项式，因为显然带入 $\bm{A}$ 后得到零矩阵，对答案没有贡献。

@@ -17,4 +17,20 @@ tags:
 
 ### 矩阵的特征值和特征向量
 
-二者以符号 $$
+二者以符号 $\lambda, \boldsymbol{\xi}$ 表示.
+
+特征向量非0.
+
+特征值和特征向量满足关系：
+$$
+\boldsymbol{A\xi} = \lambda \boldsymbol{\xi}
+$$
+
+即把矩阵对应的线性变换应用到特征向量上，并不会改变其方向。
+$$
+\begin{align*}
+\boldsymbol{IA\xi} &= \lambda \boldsymbol{I\xi}\\
+\boldsymbol{A - I}\lambda &= \bold{0}
+\end{align*}
+$$
+如果矩阵不满秩，其行列式一定为0.

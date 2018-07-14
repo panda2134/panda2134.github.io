@@ -12,7 +12,7 @@ typora-root-url: D:\Blog\
 
 如果有什么错误，请立即纠正，非常感谢。
 
-这边Blog的排版估计很渣……我懒得管了，丢个 $\LaTeX$ 版的吧……[戳我](../downloads/2018-02-26-NetworkFlow.pdf)
+这边Blog的排版估计很渣……我懒得管了，丢个 $\LaTeX$ 版的吧……[戳我](https://panda2134.github.io/downloads/2018-02-26-NetworkFlow.pdf)
 
 **UPD:**发现洛谷上面的网络流题目严重不全……这么多年省选也不会只考了10道网络流啊……翻了翻hzwer的博客，屯了40几题，准备先用一个星期做个二十几道，剩下的边练DP边带着做   
 

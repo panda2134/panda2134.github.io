@@ -111,12 +111,12 @@ $$
 \times
 
 \begin{bmatrix}
-0 &  &  &  &  & a_1 \\
-1 &  &  &  &  & a_2 \\
- & 1 &  &  &  & a_3 \\
- &  & 1 &  &  & a_4 \\
+0 &  &  &  &  & a_k \\
+1 &  &  &  &  & a_{k-1} \\
+ & 1 &  &  &  & a_{k-2} \\
+ &  & 1 &  &  & a_{k-3} \\
  &  &  &  \ddots &   & \vdots\\
-  &  &  &  & 1 & a_k
+  &  &  &  & 1 & a_1
 \end{bmatrix}
 
 = \begin{bmatrix}g_2 \\ g_3 \\ \vdots \\ g_{k+1}\end{bmatrix}^T
@@ -128,25 +128,25 @@ $$
 \begin{align*}
 \det(\lambda\bm{I}-\bm{A}) &=
 \begin{vmatrix}
-\lambda &  &  &  &  & -a_1 \\
--1 & \lambda &  &  &  & -a_2 \\
- & -1 & \lambda &  &  & -a_3 \\
- &  & -1 & \ddots &  & -a_4 \\
+\lambda &  &  &  &  & -a_k \\
+-1 & \lambda &  &  &  & -a_{k-1} \\
+ & -1 & \lambda &  &  & -a_{k-2} \\
+ &  & -1 & \ddots &  & -a_{k-3} \\
  &  &  &  \ddots & \lambda  & \vdots\\
-  &  &  &  & -1 & \lambda-a_k
+  &  &  &  & -1 & \lambda-a_1
 \end{vmatrix}\\
 &=
- \begin{vmatrix}
- \lambda &  &  &  &  & -a_1 \\
--1 & \lambda &  &  &  & -a_2 \\
- & -1 & \lambda &  &  & -a_3 \\
- &  & -1 & \ddots &  & -a_4 \\
+\begin{vmatrix}
+\lambda &  &  &  &  & -a_k \\
+-1 & \lambda &  &  &  & -a_{k-1} \\
+ & -1 & \lambda &  &  & -a_{k-2} \\
+ &  & -1 & \ddots &  & -a_{k-3} \\
  &  &  &  \ddots & \lambda  & \vdots\\
-  &  &  &  & -1 & \lambda-a_k
+  &  &  &  & -1 & \lambda-a_1
 \end{vmatrix}^T\\
 &= 
 \begin{vmatrix}
-\lambda - a_k & \cdots & -a_4 & -a_3 & -a_2 & -a_1 \\
+\lambda - a_1 & \cdots & -a_{k-3} & -a_{k-2} & -a_{k-1} & -a_k \\
 -1 & \lambda &  &  &  &  \\
  & -1 & \lambda &  &  &  \\
  &  & -1 & \lambda &  &  \\

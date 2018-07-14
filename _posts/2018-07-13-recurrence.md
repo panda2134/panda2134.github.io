@@ -119,7 +119,7 @@ $$
   &  &  &  & 1 & a_k
 \end{bmatrix}
 
-= \begin{bmatrix}g_2 \\ g_3 \\ \cdots \\ g_{k+1}\end{bmatrix}^T
+= \begin{bmatrix}g_2 \\ g_3 \\ \vdots \\ g_{k+1}\end{bmatrix}^T
 $$
 
 我们考察转移用的相伴矩阵的特征多项式：
@@ -187,10 +187,13 @@ $$
 考虑 $\{g_n\}, \{a_n\}$ 的生成函数 $G(x), A(x)$，我们发现，只有 $G(x)[x^0]$ 和 $A(x)$ 没有关系，剩余部分都是和 $A(x)$ 的卷积。
 
 也就是说：
+
 $$
 G(x) = g_0 + G(x)A(x)
 $$
+
 化简后有：
+
 $$
 \begin{align*}
 (1-A(x))G(x) &= g_0 \\

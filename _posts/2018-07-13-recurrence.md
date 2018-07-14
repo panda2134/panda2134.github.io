@@ -11,8 +11,9 @@ tags:
  - 常系数齐次线性递推
 ---
 
-才听 @Sparky_14145 说这玩意已经是 NOIP 难度辣！为了避免自己没有 NOIP 水平，特来学习。
+才听 @Sparky_14145 说这玩意已经是 NOIP 难度辣！为了避免自己没有 NOIP 水平，特来学习。下面若无说明，均有 $n \le 10^9, k \le 10^5$.
 
+强烈推荐 [shadowice1984](https://www.luogu.org/blog/ShadowassIIXVIIIIV/solution-p4723) 的讲解。（老哥稳.jpg）
 $$
 \newcommand{bm}{\boldsymbol}
 $$
@@ -38,7 +39,7 @@ $$
 \end{align*}
 $$
 
-如果矩阵不满秩，其行列式一定为0.显然，若要 $\boldsymbol{\xi}$ 不是 $\boldsymbol{0}$，系数矩阵必不满秩，则有：
+如果矩阵不满秩，其行列式一定为0.显然，若要 $\boldsymbol{\xi}​$ 不是 $\boldsymbol{0}​$，系数矩阵必不满秩，则有：
 
 $$
 p(\lambda) = \det(\lambda\boldsymbol{I}-\boldsymbol{A}) = 0
@@ -95,6 +96,8 @@ p(\bm{A}) \bm{\xi_i} &= \left(\prod_{j \ne i} (\lambda_j \bm{I} - \bm{A})\right)
 &= \bm{0}.
 \end{align*}
 $$
+
+（暴力展开后可以证明这里的括号满足交换律）
 
 于是 $p(\bm{A}) = \bm{0}$，定理立刻得证。
 
@@ -158,10 +161,95 @@ $$
 
 要优化矩阵快速幂，就是要快速求出 $\bm{A}^n$. 考虑模掉零化多项式，因为显然带入 $\bm{A}$ 后得到零矩阵，对答案没有贡献。
 
-使用数学归纳法即可证明，$\bm{A}^n$ 只和 $\bm{A}^0\sim \bm{A}^{k-1}$ 有关。在此略去（其实是太晚了撑不住了QAQ）。
-
 于是可以做一个模特征多项式意义下的矩阵快速幂。这样的复杂度是 $O(k \lg k \lg n)$ 的。
+
+这样就可以把 $\bm{A}^n$ 表示为 $\bm{A}^0 \sim \bm{A}^{k-1}$ 的线性组合，如下（其中 $\bm{V}_0$ 是初始值行向量）：
+
+$$
+\begin{align*}
+\bm{A}^n &= \sum_{i=0}^{k-1} c_i \bm{A}^i \\
+\bm{V}_0\bm{A}^n &= \sum_{i=0}^{k-1}c_i \bm{V}_0 \bm{A}^i
+\end{align*}
+$$
+
+考虑只取每个行向量的第一项。那么， $g_n = \sum_{i=0}^{k-1}c_i g_i$.
+
+右侧式子中含有 $a_0 \sim a_{k-1}$. 现在唯一的问题就是求出 $a_0 \sim a_{k-1}$. 大多数时候题目都给出了，不过如果题目只给出了 $a_0$，就需要用下面的方法。
+
+问题等价于 $n, k \le 10^5$ 的常系数齐次线性递推。
+
+换个形式：
+$$
+g_i = \sum_{j=1}^i g_{i-j}a_j
+$$
+(对于 $j > k$，$a_j = 0$)
+
+考虑 $\{g_n\}, \{a_n\}$ 的生成函数 $G(x), A(x)$，我们发现，只有 $G(x)[x^0]$ 和 $A(x)$ 没有关系，剩余部分都是和 $A(x)$ 的卷积。
+
+也就是说：
+$$
+G(x) = g_0 + G(x)A(x)
+$$
+化简后有：
+$$
+\begin{align*}
+(1-A(x))G(x) &= g_0 \\
+G(x) &= \frac{g_0}{1-A(x)}\\
+G(x) &\equiv g_0 (1-A(x))^{-1} \pmod{x^n}
+\end{align*}
+$$
+
+
+用多项式求逆做就可以了。
 
 ## 代码
 
-咕咕咕。
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+namespace polynomial {
+	// 多项式大全略
+}
+
+using namespace polynomial;
+
+int n, k, ans, a[MAXN + 10], f[MAXN + 10], c[MAXN + 10], mod_poly[MAXN + 10];
+
+inline int readint() {
+    int f=1, r=0; char c=getchar();
+    while(!isdigit(c)) { if(c=='-')f=-1; c=getchar(); }
+    while(isdigit(c)) { r=r*10+c-'0'; c=getchar(); }
+    return f*r;
+}
+
+void solve(int x, int ret[]) {
+    static int a[MAXN + 10], tmp[MAXN + 10];
+    memset(a, 0, sizeof(a));
+    a[1] = 1;
+    memset(ret, 0, sizeof(int)*(MAXN+10));
+    ret[0] = 1;
+    while(x > 0) {
+        if(x & 1) {
+            conv(k-1, a, ret, ret);
+            poly_div(2*k-1, k, ret, mod_poly, tmp, ret);
+        }
+        x >>= 1;
+        conv(k-1, a, a, a);
+        poly_div(2*k-1, k, a, mod_poly, tmp, a);
+    }
+}
+
+int main() {
+    n = readint(), k = readint();
+    for(int i = 1; i <= k; i++) f[i] = (readint()%MOD+MOD)%MOD;
+    for(int i = 0; i < k; i++) a[i] = (readint()%MOD+MOD)%MOD;
+    mod_poly[k] = 1;
+    for(int i = 1; i <= k; i++) mod_poly[k-i] = dec(0, f[i]);
+    solve(n, c);
+    for(int i = 0; i < k; i++) ans = pls(ans, mul(c[i], a[i]));
+    cout << ans << '\n';
+    return 0;
+}
+```
+

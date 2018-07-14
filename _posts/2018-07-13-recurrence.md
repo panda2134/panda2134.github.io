@@ -212,7 +212,7 @@ $$
 using namespace std;
 
 namespace polynomial {
-	// 多项式大全略
+    // 多项式大全略
 }
 
 using namespace polynomial;

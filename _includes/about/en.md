@@ -1,5 +1,4 @@
-Hello, I'm panda\_2134, a high school student, also a competitive programmer.        
-I have a dream of getting gold medal in China's National Olympiad in Informatics.
+Hello, I'm panda\_2134, a high school student who loves computer science, and used to be a competitive programmer(but not anymore).        
 
 > Just do it. 
 

@@ -1,4 +1,4 @@
-Hello, I'm panda\_2134, a high school student who loves computer science, and used to be a competitive programmer(but not anymore).        
+Hello, I'm panda\_2134, a math student(hopefully?) at college who loves computer science, and used to be a competitive programmer.        
 
 > Just do it. 
 

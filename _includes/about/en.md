@@ -1,4 +1,5 @@
-Hello, I'm panda\_2134, a math student(hopefully?) at college who loves computer science, and used to be a competitive programmer.        
+Hello, I'm panda\_2134, a college student who loves computer science, and used to be a competitive programmer.        
+Currently I'm learning in the Dept. of Chemistry & Biology of Tsinghua University.
 
 > Just do it. 
 

@@ -74,13 +74,13 @@ valine_app_key: QrVsjVtv5qeiy6UiGjOzdBPF
 
 # Analytics settings
 # Baidu Analytics 
-# ba_track_id: [your track id]
+ba_track_id: 305a497635f20cf684011134bf7d0868 
 
 # Google Analytics
 # ga_track_id: 'UA-00000000-1'            # Format: UA-xxxxxx-xx
 # ga_domain: panda2134.github.io
 
-cnzz_track_id: 1273158321
+#cnzz_track_id: 1273158321
 
 
 # Sidebar settings

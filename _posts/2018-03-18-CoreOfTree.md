@@ -1,4 +1,4 @@
----
+--
 categories: 解题报告
 comments: true
 title: "[NOIP2007]树网的核"
@@ -33,16 +33,16 @@ $n \leq 300000$.
 我们可以证明，最优选定路径一定在某条直径上。  （如果证明有问题欢迎留言= =）
 这需要分2种情况讨论。我们采用反证法。   
 1. 选定的路径与直径不相交。这时我们需要证明选定路径不是最优的。如图，$<a, b>$ 为直径，$<c,d>$ 为选定路径。我们发现，如果 $c$ 左侧有点 $c'$, $d$ 右侧有点 $d'$, 那么一定有 $\vert fc' \vert < \vert af \vert$ ；对 $d$ 而言也有 $\vert  fd' \vert < \vert fb \vert$，也就是说把选定路径长度不变地移动到直径 $ab$ 上，且盖住 $f$，答案只会更好。   
-     ![CorePic1](https://panda2134.tk/img/core01.jpg)
+     ![CorePic1](https://panda2134.github.io/img/core01.jpg)
 2. 路径与直径有部分重合（自然也包含全部重合的情况）。如图。   
      在这种情况下，由直径的性质可知 $\vert be \vert \ge \vert de \vert$, 于是把 $\vert ed \vert$ 一段移动到 $\vert eb \vert$，答案不会更差。   
-       ![CorePic2](https://panda2134.tk/img/core02.jpg)
+      ![CorePic2](https://panda2134.github.io/img/core02.jpg)
        于是命题得证。  
        我们再证明，即使存在多条直径，最优解也满足上述性质。   
        不失一般性，我们分析2条直径，且树的中心在边上的情况。   
        于是一定有 $\vert ap \vert = \vert a'p \vert, \vert bq \vert = \vert b'q \vert$. 不妨称之为性质3.
        显然，由于$\vert pa' \vert \le \vert pb \vert, \vert qb' \vert \le \vert qa \vert$ ，红色和黄色的路径都不会是最优解。而对于绿色路径，由于直径的性质3，取在哪条直径都一样。于是得证。
-       ![CorePic3](https://panda2134.tk/img/core03.jpg)
+       ![CorePic3](https://panda2134.github.io/img/core03.jpg)
 ----------------------------------
 
 证明了上述的定理，我们就可以设计主算法了：
@@ -51,7 +51,7 @@ $n \leq 300000$.
 2. 显然贪心地取得最大可行长度的路径，答案不会更差。于是用 two-pointers 从直径的一端向另一端扫。如图。引用chrt学姐的一句话：
 > 换一种看待树的方式，把直径横着，其他点挂在下方。（就像架子上的葡萄～）
 
-![CorePic4](https://panda2134.tk/img/core04.jpg)
+![CorePic4](https://panda2134.github.io/img/core04.jpg)
 然后每次在满足长度限制的条件下尽量扩展 R 指针，每次扩展到不能再扩展之后，用L左侧的最大距离、R右侧的最大距离， $[L, R]$ 区间内最大距离更新答案。前两者可以线性递推，第三个类似滑动窗口，直接用单调队列更新即可。
 
 

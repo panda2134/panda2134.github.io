@@ -109,7 +109,7 @@ $$
 &= \sum_{k=1}^{+\infty}\mu(k)\sum_{nk \backslash t} f(t) \\
 &= \sum_{n \backslash t} f(t) \sum_{k \backslash (t / n)} \mu(k) \\
 &= \sum_{n \backslash t} f(t) [t = n] \\
-&= f(t)
+&= f(n)
 \end{align*}
 $$
 

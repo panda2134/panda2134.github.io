@@ -67,7 +67,7 @@ $\mathrm{E_{池}} \geq 0.2 \mathrm{V} \Leftrightarrow K^{\Theta} \geq 10^{7} \Le
 考虑反应：
 
 $$
-m \: \mathrm{ox} + n \: e^{-} \rightleftharpoons s \: \mathrm{red}
+m \; \mathrm{ox} + n \; e^{-} \rightleftharpoons s \; \mathrm{red}
 $$
 
 则根据上述方程有：
@@ -131,27 +131,27 @@ $E^{\ominus} = 0.2415 \text{V}$
 
 - 生物中常常以 $\mathrm{pH=7}$ 为标准状态，并用 $\Delta G^{\ominus'}, E^{\ominus'}$ 代替 $\Delta G^{\ominus}, E^{\ominus}$ 等。
 
-  $\mathrm{NAD^+ + H^+ + 2e \rightarrow NADH \:\:\: E^{\ominus} = -0.11V}$  求对应的 $E^{\ominus'}$.
+  $\mathrm{NAD^+ + H^+ + 2e \rightarrow NADH \;\;\; E^{\ominus} = -0.11V}$  求对应的 $E^{\ominus'}$.
 
   分析：对象是电极反应，而非原电池；如果我们选定化学里的标准状态，则生物的标准状态实质上是氢离子浓度发生了变化。直接采用 Nernst 方程。
 
-- 实验测得 $\mathrm{0.10 \: mol\cdot dm^{-3} \: HX}$ 的氢电极（$p^{\ominus}$）与饱和甘汞电极组成电池，电势为 $\mathrm{0.48 \: V}$，求该酸电离常数。
+- 实验测得 $\mathrm{0.10 \; mol\cdot dm^{-3} \; HX}$ 的氢电极（$p^{\ominus}$）与饱和甘汞电极组成电池，电势为 $\mathrm{0.48 \; V}$，求该酸电离常数。
 
 
   分析：可以采用分类讨论正负极的方法。但是，如果可以的话，最好把正负极确定下来。溶液中的氢离子浓度显然小于标准态；浓度小，氢离子被还原的反应平衡左移，难夺取电子，还原性增强，电极电势降低，故其电极电势为负数；而饱和甘汞电极电极电势为正。由此可确定正负极。再利用 Nernst 方程列式算出对应氢离子浓度即可。
 
-- 向 $\mathrm{0.200\: mmol \: AgCl(cr)}$ 中加入少量水和过量锌粉，使得总体积为 $2 \mathrm{\:mL}$. 计算说明，锌粉能否把氯化银全部还原成银单质。
+- 向 $\mathrm{0.200\; mmol \; AgCl(cr)}$ 中加入少量水和过量锌粉，使得总体积为 $2 \mathrm{\;mL}$. 计算说明，锌粉能否把氯化银全部还原成银单质。
   分析：所谓完全反应，实际上还是要看标准平衡常数，而不是计算平衡状态。首先，反应是绝对的，不反应是相对的；完全性，自然也是相对而言的。而要看 $\mathrm{K^{\ominus}}$，就要看相应的标准 Gibbs 自由能，以及相应的标准电动势。查表找出 $\mathrm{AgCl/Ag}$ 以及 $\mathrm{Zn^{2+}/Zn}$ 之标准电极电势，相减即可。
 
-- 电解 $\mathrm{[H^+] = 1 \: mol \cdot L^{-1}}$ 的 $\mathrm{H_2 SO_4}$ 溶液，阳极放出 $\mathrm{O_2}(p^{\ominus})$，阴极放出 $\mathrm{H_2}(p^{\ominus})$.
+- 电解 $\mathrm{[H^+] = 1 \; mol \cdot L^{-1}}$ 的 $\mathrm{H_2 SO_4}$ 溶液，阳极放出 $\mathrm{O_2}(p^{\ominus})$，阴极放出 $\mathrm{H_2}(p^{\ominus})$.
 
   利用以下资料计算理论分解电势。
 $$
   \begin{align*}
-  \mathrm{2H^{+} + 2e }&\rightarrow\mathrm{H_2} &\mathrm{ E^{\ominus}} &= \mathrm{0.00\: V}\\
-  \mathrm{H_2 O + \frac{1}{2}O_2 + 2e} &\rightarrow \mathrm{2 OH^-} &\mathrm{ E^{\ominus}} &= \mathrm{+0.40\: V}
+  \mathrm{2H^{+} + 2e }&\rightarrow\mathrm{H_2} &\mathrm{ E^{\ominus}} &= \mathrm{0.00\; V}\\
+  \mathrm{H_2 O + \frac{1}{2}O_2 + 2e} &\rightarrow \mathrm{2 OH^-} &\mathrm{ E^{\ominus}} &= \mathrm{+0.40\; V}
   \end{align*}
-  $$
+$$
 
 分析：并不需要把氧气的还原产物换算成 $\mathrm{H^+}$！只需要使用水的离子积算出硫酸中的 $\mathrm{[OH^-]}$ 即可。
 

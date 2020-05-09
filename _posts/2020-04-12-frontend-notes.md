@@ -80,3 +80,15 @@ tags: ['javascript', 'css']
 
 4. `JSON.stringify`: https://juejin.im/post/5decf09de51d45584d238319
 5. `<link rel="stylesheet alternate" href="a.css">` 用 `alternate` 做换肤，切换 DOM 的 `disabled` 即可
+6. 关于正则匹配。C++ / JS中，匹配结果数组[0] 都是匹配结果，**[1..]开始才是匹配组**！此外，ES6中的匹配返回结构如下：
+```typescript
+interface RegExpMatchArray extends Array<string> {
+	input: string;
+  index: number;
+  // group: object; // only for NAMED capture groups! e.g. /(?<name>\w+)/
+}
+```
+
+当正则表达式不含 `g` 标志时，`String.prototype.match(re: RegExp)` 的结果和 `RegExp.prototype.exec(str: string)​`相同。
+
+关于 `global` / `sticky`属性：设置这些属性的时候，RegExp对象是**有状态**的。

@@ -1,7 +1,7 @@
 #### Intro
 
 Hello, I'm panda\_2134, a college student who loves computer science, and used to be a competitive programmer.        
-Currently I'm learning in Dept. Chemistry of Tsinghua University. Being passinate in software engineering, I wan't to switch to Dept. SE. However, this can be hard due to extreme competition.
+Currently I'm learning in School of Software Engineering of Tsinghua University.
 
 > Just do it. 
 

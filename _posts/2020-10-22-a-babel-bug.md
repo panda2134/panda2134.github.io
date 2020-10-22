@@ -15,19 +15,19 @@ tags: ['javascript', 'babel']
 ```jsx
 
 export default {
-	// ... data等省略，在data中声明了blanks和submitted
-	render () {
-		// ... 前面代码省略，声明res为字符串数组
-		const descriptionNodes = []
-		let blankCount = 0
-		res.forEach((value, index, { length }) => {
-		  if (/* 省略 */) {
-			blankCount++
-			descriptionNodes.push(<el-input vModel={this.blanks[index]} disabled={this.submitted} />)
-		  }
-		})
-		// ... return等省略
-	}
+  // ... data等省略，在data中声明了blanks和submitted
+  render () {
+    // ... 前面代码省略，声明res为字符串数组
+    const descriptionNodes = []
+    let blankCount = 0
+    res.forEach((value, index, { length }) => {
+      if (/* 省略 */) {
+      blankCount++
+      descriptionNodes.push(<el-input vModel={this.blanks[index]} disabled={this.submitted} />)
+      }
+    })
+    // ... return等省略
+  }
 }
 
 ```
@@ -47,20 +47,20 @@ export default {
 ```jsx
 
 export default {
-	// ... data等省略，在data中声明了blanks和submitted
-	render () {
-		// ... 前面代码省略，声明res为字符串数组
-		const descriptionNodes = []
-		let blankCount = 0
-		const { blanks, submitted } = this
-		res.forEach((value, index, { length }) => {
-		  if (/* 省略 */) {
-			blankCount++
-			descriptionNodes.push(<el-input vModel={blanks} disabled={submitted} />)
-		  }
-		})
-		// ... return等省略
-	}
+  // ... data等省略，在data中声明了blanks和submitted
+  render () {
+    // ... 前面代码省略，声明res为字符串数组
+    const descriptionNodes = []
+    let blankCount = 0
+    const { blanks, submitted } = this
+    res.forEach((value, index, { length }) => {
+      if (/* 省略 */) {
+      blankCount++
+      descriptionNodes.push(<el-input vModel={blanks} disabled={submitted} />)
+      }
+    })
+    // ... return等省略
+  }
 }
 
 ```
@@ -71,26 +71,26 @@ export default {
 
 ```js
 render () {
-	// ... 无关部分省略
-	var _this = this;
-	res.forEach(function(value, index, arg) {
-		var length = arg.length;
-		var _this2 = this;
-		if (/* blahblahblah */) {
-			blankCount++
-			descriptionNodes.push(_this.createElement("el-input",{ // h 为注入的
-				class: "fill-blank__input",
-				attrs: { disabled: submitted },
-				model: {
-					value:blanks[blankCount],
-					callback: function(e) {
-						_this2.$set(blanks, blankCount, e)
-					}
-				}
-			}))
-		}
-	})
-	// ... 无关部分省略
+  // ... 无关部分省略
+  var _this = this;
+  res.forEach(function(value, index, arg) {
+    var length = arg.length;
+    var _this2 = this;
+    if (/* blahblahblah */) {
+      blankCount++
+      descriptionNodes.push(_this.createElement("el-input",{ // h 为注入的
+        class: "fill-blank__input",
+        attrs: { disabled: submitted },
+        model: {
+          value:blanks[blankCount],
+          callback: function(e) {
+            _this2.$set(blanks, blankCount, e)
+          }
+        }
+      }))
+    }
+  })
+  // ... 无关部分省略
 }
 ```
 

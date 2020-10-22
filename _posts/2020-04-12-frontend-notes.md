@@ -92,3 +92,6 @@ interface RegExpMatchArray extends Array<string> {
 当正则表达式不含 `g` 标志时，`String.prototype.match(re: RegExp)` 的结果和 `RegExp.prototype.exec(str: string)​`相同。
 
 关于 `global` / `sticky`属性：设置这些属性的时候，RegExp对象是**有状态**的。
+7. 关于 `tsconfig.json` 
+ - `exclude` 这个选项**根本就不是用来排除文件的！**它只能减少通过`include`包括的文件！官方文档写的很清楚 https://www.typescriptlang.org/v2/en/tsconfig#exclude
+ - `"compilerOptions"` 下面有 `"skipLibCheck": true`，会跳过库内部的ts报错

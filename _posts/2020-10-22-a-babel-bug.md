@@ -42,7 +42,7 @@ export default {
 
 冷静分析一下，闭包不应该是导致问题发生的原因。首先，这里的forEach内的函数是箭头函数，箭头函数没有词法作用域，应该会直接继承外层的 `this`；其次，箭头函数内代码同步执行，不会有其他地方对 `this` 作更改。
 
-先保留提取 `blank, submitted` 后的代码如下不变。按说，箭头函数内不再有对于 `this` 的引用，为什么还会出现相关错误呢？
+先保留提取 `blank, submitted` 后的代码如下不变。按理说，箭头函数内不再有对于 `this` 的引用，为什么还会出现相关错误呢？
 
 ```jsx
 
@@ -78,7 +78,7 @@ render () {
     var _this2 = this;
     if (/* blahblahblah */) {
       blankCount++
-      descriptionNodes.push(_this.createElement("el-input",{ // h 为注入的
+      descriptionNodes.push(_this.$createElement("el-input",{ // h 为注入的
         class: "fill-blank__input",
         attrs: { disabled: submitted },
         model: {

@@ -195,5 +195,9 @@ friends: [
 	{
 		title: "icy's Blog"
 		href: "https://icys.top/"
-	}
+	},
+        {
+                title: "Starrah",
+                href: "https://starrah.cn/"
+        }
 ]

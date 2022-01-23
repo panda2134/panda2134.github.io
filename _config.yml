@@ -104,14 +104,15 @@ service-worker: true
 
 # Friends
 friends: [
+    { title: "Starrah", href: "https://starrah.cn/"},
     {
         title: "chrt",
         href: "https://chrt.github.io"
     },
-	{
-		title: "翻滚吧牛宝宝",
-		href: "https://blog.csdn.net/qantun_mechanics"
-	},
+    {
+        title: "翻滚吧牛宝宝",
+        href: "https://blog.csdn.net/qantun_mechanics"
+    },
     {
         title: "Edgration",
         href: "https://edgration.com"
@@ -156,10 +157,6 @@ friends: [
 		title: "玫葵之蝶",
 		href: "https://stone41123.coding.me/stone41123/"
 	},
-    {
-		title: "宜昌一中 Online Judge",
-		href: "https://oj.ycyzoi.com/"
-	},
 	{
 		title: "Sparky_14145",
 		href: "https://sparky-14145.github.io/"
@@ -193,5 +190,5 @@ friends: [
 		href: "https://antileafqwq.fun/"
 	},
 	{ title: "icy's Blog", href: "https://icys.top/"},
-        { title: "Starrah", href: "https://starrah.cn/"}
+	{ title: "c7w", href: "https://c7w.tech/"}
 ]
